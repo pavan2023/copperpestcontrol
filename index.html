@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Copper Pest Control</title>
+
+  <!-- tailwind css CDN -->
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./src/css/styles.css">
+
+</head>
+
+<body>
+
+  <!-- Nav bar start -->
+  <nav class="bg-[#789F7B] w-full">
+    <div class="container mx-auto flex justify-between items-center p-4">
+      <!-- logo -->
+      <a href="#" class="text-white text-xl font-bold">Copper Pest Control</a>
+
+      <!-- nav links start-->
+      <!-- nav icon for mobile -->
+      <img id="openIcon" src="./src/img/nav-icon-open.svg" alt="open icon" class="lg:hidden w-8">
+      <img id="closeIcon" src="./src/img/nav-icon-close.svg" alt="open icon" class="hidden w-8">
+      <!-- nav icon for mobile -->
+
+      <!-- nav items -->
+      <ul class="grid grid-cols-1 bg-[#DB8837] py-6 pl-4 space-y-8 absolute w-3/4 min-h-min top-[0px] right-[0px] 
+        lg:flex lg:bg-[#789F7B] lg:w-auto lg:h-auto lg:relative lg:space-x-8 lg:space-y-0 lg:py-2 lg:pl-0 lg:flex font-semibold">
+        <li class="relative group">
+          <a href="#" class="text-white hover:text-black">Services</a>
+          <ul class="hidden group-hover:block bg-[#789F7B] absolute space-y-2 w-max pt-2">
+            <li><a href="#" class="block px-4 py-2 text-white hover:bg-[#4CAF50]">Cockroach Treatment</a></li>
+            <li><a href="#" class="block px-4 py-2 text-white hover:bg-[#4CAF50]">Bed Bug Control</a></li>
+            <li><a href="#" class="block px-4 py-2 text-white hover:bg-[#4CAF50]">Rodent Rat Control</a></li>
+            <li><a href="#" class="block px-4 py-2 text-white hover:bg-[#4CAF50]">Termite Control</a></li>
+            <li><a href="#" class="block px-4 py-2 text-white hover:bg-[#4CAF50]">Ant Control</a></li>
+            <li><a href="#" class="block px-4 py-2 text-white hover:bg-[#4CAF50]">Mosquito Control</a></li>
+          </ul>
+        </li>
+        <li class="relative group">
+          <a href="#" class="text-white hover:text-black">Plans & Packages</a>
+          <ul class="hidden group-hover:block bg-[#789F7B] absolute space-y-2 w-max pt-2">
+            <li><a href="#" class="block px-4 py-2 text-white hover:bg-[#4CAF50]">Single Service Plans</a></li>
+            <li><a href="#" class="block px-4 py-2 text-white hover:bg-[#4CAF50]">Subscription Plans</a></li>
+            <li><a href="#" class="block px-4 py-2 text-white hover:bg-[#4CAF50]">Seasonal Packages</a></li>
+          </ul>
+        </li>
+        <li><a href="#" class="text-white hover:text-black">Precautions</a></li>
+        <li><a href="#" class="text-white hover:text-black">Pest Info</a></li>
+      </ul>
+      <!-- nav items -->
+      <!-- nav links start-->
+
+    </div>
+  </nav>
+  <!-- Nav bar End -->
+
+  <main class="bg-[#F5F5DC] min-h-full h-min">
+    <div class="md:container mx-auto space-y-8 lg:space-x-8 py-7 px-4 grid lg:grid-cols-2 items-center content-center justify-center">
+    <div class="space-y-8">
+      <h1 class="text-[23px] text-center font-bold">
+        Fast, Reliable, and Eco-Friendly Pest Control at Lower Prices
+      </h1>
+  
+      <div class="grid space-y-6 md:grid-cols-2 md:space-y-0  justify-items-center">
+        <button type="button" class="w-[220px] bg-[#4CAF50] text-white px-4 py-2 rounded-4xl">
+          Book Your Service Now
+        </button>
+  
+        <button type="button" class="w-[220px] bg-[#4CAF50] text-white px-4 py-2 rounded-4xl">
+          Request a Callback
+        </button>
+       </div> 
+  
+      <p class="text-justify">
+        We understand the importance of a pest-free environment, which is why we offer affordable and reliable pest
+        control services without hidden costs. Our expert technicians provide clear explanations of our treatments,
+        ensuring you’re fully informed every step of the way. With fast and efficient service, we deliver lasting
+        results to protect your home or business from unwanted pests.
+      </p>
+    </div>
+
+    <img src="./src/img/home-img.svg" alt="">
+  </div>
+
+  </main>
+
+</body>
+
+</html>  
