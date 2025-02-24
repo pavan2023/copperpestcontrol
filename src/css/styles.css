@@ -1,20 +1,3 @@
 @import "tailwindcss";
-
-:root {
-  --navbar-bg-color: #f7e5d9;
-  --logo-color: #802a00;
-  --nav-link-color: #802a00;
-  --nav-link-hover-color: #88370f;
-}
-
-.navbg {
-  background-color: var(--navbar-bg-color);
-}
-
-.navtextcolor {
-  color: var(--nav-link-color);
-}
-
-.navtextcolorhvr {
-  color: var(--nav-link-hover-color);
-}
+@import "tailwindcss/utilities";
+@import "tailwindcss/components";
