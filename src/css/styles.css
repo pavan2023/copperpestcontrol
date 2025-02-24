@@ -1,0 +1,19 @@
+
+:root {
+    --navbar-bg-color: #F7E5D9;
+    --logo-color: #802A00;
+    --nav-link-color: #802A00;
+    --nav-link-hover-color: #88370f;
+}
+ 
+.navbg {
+    background-color: var(--navbar-bg-color);
+}
+
+.navtextcolor {
+    color: var(--nav-link-color);
+}
+
+.navtextcolorhvr {
+    color: var(--nav-link-hover-color);
+}
