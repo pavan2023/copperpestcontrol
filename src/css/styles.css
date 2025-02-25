@@ -1,3 +1,19 @@
 @import "tailwindcss";
 @import "tailwindcss/utilities";
 @import "tailwindcss/components";
+
+/* Custom styles */
+
+li::before {
+  content: "✔";
+  margin-right: 0.5rem;
+  color: green;
+  font-weight: bolder;
+  position: absolute;
+  left: -1.5rem;
+}
+
+li {
+  position: relative;
+  right: -1.5rem;
+}
