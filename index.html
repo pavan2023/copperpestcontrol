@@ -22,15 +22,21 @@
 </head>
 
 <body>
+    <!-- spline object -->
+    <!-- <div class="z-1 w-full h-full absolute top-0 left-0">
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.69/build/spline-viewer.js"></script>
+        <spline-viewer url="https://prod.spline.design/Ko5Nxbleq8fWZDI2/scene.splinecode"></spline-viewer>
+    </div> -->
+    <!-- spline object -->
 
     <!-- navbar start -->
-    <nav class="fixed top-0 left-0 w-full shadow-md z-10 bg-white">
+    <nav class="fixed top-0 left-0 w-full shadow-md z-2 bg-white">
         <div class="container mx-auto flex justify-between items-center h-full p-6">
             <a href="#">
-                <img src="./src/img/CPC Logo.svg" alt="" class="w-30">
+                <img src="./src/img/CPC full logo.svg" alt="" class="w-50">
             </a>
 
-            <ul class="hidden flex items-center space-x-10">
+            <ul class="hidden items-center space-x-10">
                 <li><a href="#services" class="text-[#CB4948] font-bold hover:text-[#6EAF9E]">Services</a></li>
                 <li><a href="#Plans & Packages" class="text-[#CB4948] font-bold hover:text-[#6EAF9E]">Plans &
                         Packages</a></li>
@@ -42,24 +48,27 @@
     <!-- navbar end -->
 
     <!-- hero section start -->
-    <main class="mt-24 h-full p-6">
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center pt-4">
+    <main class="mt-24 h-full p-6 ">
+        <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center pt-4">
 
             <div class="flex flex-col justify-center space-y-10">
-                <strong class="text-2xl text-center md:text-4xl">
+                <strong class="text-[31px] text-center xl:text-4xl">
                     Fast, Reliable, and Eco-Friendly Pest Control at Lower Prices
                 </strong>
 
-                <div class="w-full flex mx-auto justify-between md:justify-around">
-                    <button class="bg-[#6EAF9E] font-semibold text-white px-4 py-2 rounded-4xl hover:bg-[#468070] md:px-8 md:py-4 ">
+                <div
+                    class="w-full flex flex-col space-y-6 mx-auto justify-between items-center md:justify-around md:flex-row md:space-y-0 lg:gap-1 xl:space-y-0 xl:justify-around">
+                    <button
+                        class="w-[300px] bg-[#6EAF9E] font-semibold text-white px-4 py-2 rounded-4xl hover:bg-[#468070] md:py-4 lg:px-6">
                         Book Your Service Now
                     </button>
-                    <button class="bg-[#6EAF9E] font-semibold text-white px-4 py-2 rounded-4xl hover:bg-[#468070] md:px-8 md:py-4 ">
+                    <button
+                        class="w-[300px] bg-[#6EAF9E] font-semibold text-white px-4 py-2 rounded-4xl hover:bg-[#468070] md:py-4 lg:px-6">
                         Request a Callback
                     </button>
                 </div>
 
-                <p class="text-justify md:text-2xl">
+                <p class="text-justify xl:text-2xl">
                     We understand the importance of a pest-free environment, which is why we offer affordable and
                     reliable pest control services without hidden costs. Our expert technicians provide clear
                     explanations of our treatments, ensuring you’re fully informed every step of the way. With fast and
@@ -75,9 +84,10 @@
     <!-- hero section end -->
 
 
-
     <!-- Link to external JavaScript file -->
     <script src="script.js"></script>
+    <script src="./src/scripts/spline.js"></script>
+
 </body>
 
 </html>
