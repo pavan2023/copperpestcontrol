@@ -4,6 +4,10 @@
 
 /* Custom styles */
 
+nav div ul li::before {
+  content: none;
+}
+
 li::before {
   content: "✔";
   margin-right: 0.5rem;
