@@ -39,7 +39,7 @@ function updateYear() {
 }
 // Year update code end
 
-// Navbar toggle function
+// Navbar toggle function start
 function attachMenuToggle() {
     const menuToggle = document.getElementById("menu-toggle");
     const menu = document.getElementById("mobile-menu");
@@ -50,3 +50,5 @@ function attachMenuToggle() {
         });
     }
 }
+// Navbar toggle function end
+
