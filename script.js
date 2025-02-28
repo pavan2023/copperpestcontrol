@@ -23,7 +23,7 @@ function loadContent(section, file, callback) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    loadContent("navbar", "navbar.html");
+    loadContent("navbar", "navbar.html", attachMenuToggle);
     loadContent("footer", "footer.html", updateYear); // Ensure year updates after footer loads
 });
 // Component reusable code end
@@ -38,3 +38,15 @@ function updateYear() {
     }
 }
 // Year update code end
+
+// Navbar toggle function
+function attachMenuToggle() {
+    const menuToggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("mobile-menu");
+
+    if (menuToggle && menu) {
+        menuToggle.addEventListener("click", function () {
+            menu.classList.toggle("hidden");
+        });
+    }
+}

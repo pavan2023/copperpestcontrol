@@ -1,15 +1,22 @@
-<nav class="fixed top-0 left-0 w-full shadow-md z-2 bg-white">
-    <div class="container mx-auto flex justify-between items-center h-full p-6">
+<nav class="fixed top-0 left-0 w-full shadow-md z-10 bg-white">
+    <div class="container mx-auto flex justify-between items-center h-full p-6 relative">
         <a href="./index.html">
-            <img src="./src/img/CPC logo.svg" alt="" class="w-50">
+            <img src="./src/img/CPC logo.svg" alt="CPC Logo" class="w-50">
         </a>
 
-        <ul class="flex items-center space-x-10">
-            <li><a href="./services.html" class="text-[#B74134] font-bold hover:text-[#6EAF9E]">Services</a></li>
-            <li><a href="#Plans & Packages" class="text-[#B74134] font-bold hover:text-[#6EAF9E]">Plans &
-                    Packages</a></li>
-            <li><a href="#Precautions" class="text-[#B74134] font-bold hover:text-[#6EAF9E]">Precautions</a></li>
-            <li><a href="#Pest Info" class="text-[#B74134] font-bold hover:text-[#6EAF9E]">Pest Info</a></li>
-        </ul>
+        <!-- Mobile Menu Toggle Button -->
+        <button id="menu-toggle" class="md:hidden text-[#B74134] font-bold text-4xl relative z-20">
+            ☰
+        </button>
+
+        <!-- Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:flex md:items-center md:space-x-10 absolute top-full right-0 w-1/2 bg-amber-100 md:static md:w-auto md:bg-transparent">
+            <ul class="flex flex-col md:flex-row md:space-x-10 py-10 space-y-6 md:py-0 md:space-y-0">
+                <li><a href="./services.html" class="text-[#B74134] font-bold hover:text-[#6EAF9E]">Services</a></li>
+                <li><a href="#Plans & Packages" class="text-[#B74134] font-bold hover:text-[#6EAF9E]">Plans & Packages</a></li>
+                <li><a href="#Precautions" class="text-[#B74134] font-bold hover:text-[#6EAF9E]">Precautions</a></li>
+                <li><a href="#Pest Info" class="text-[#B74134] font-bold hover:text-[#6EAF9E]">Pest Info</a></li>
+            </ul>
+        </div>
     </div>
 </nav>
