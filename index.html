@@ -165,26 +165,33 @@
                     Request a Callback
                 </strong>
 
-                <form action="" class="">
+                <form action="https://formsubmit.co/pavanchavan094@gmail.com" method="POST" class="">
                     <div class="space-y-4 md:gap-6">
-                        <input type="text" placeholder="Name"
+                        <input type="text" name="name" placeholder="Name" required
                             class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
-                        <input type="tel" placeholder="Phone"
+                        <input type="tel" name="phone" placeholder="Phone" required
                             class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
-                        <input type="text" placeholder="Address"
+                        <input type="text" name="address" placeholder="Address" required
                             class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
-                        <input type="text" placeholder="Pest problem"
+                        <input type="text" name="pest_problem" placeholder="Pest Problem" required
                             class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
-                        <input type="text" placeholder="Preferred Date"
+                        <input type="text" name="preferred_date" placeholder="Preferred Date" required
                             class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
-                        <input type="text" placeholder="Preferred Time"
+                        <input type="text" name="preferred_time" placeholder="Preferred Time" required
                             class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
+                
+                        <!-- Hidden fields for customization -->
+                        <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="New Booking Request!">
+                
                         <button type="submit"
                             class="block mx-auto col-span-2 w-[300px] bg-[#6EAF9E] font-semibold text-white px-4 py-2 rounded-4xl hover:bg-[#468070] md:py-3 lg:px-6">
                             Submit
                         </button>
                     </div>
                 </form>
+
             </div>
 
         </div>
