@@ -31,12 +31,16 @@
         <div class="container mx-auto py-10">
 
             <!-- Hoziratal scroll bar code start -->
-            <div id="scrollContainer" class="flex overflow-x-auto h-[60vh] items-center px-10 space-x-6">
-                <!-- Card Container -->
-                <div class="flex space-x-6">
+            <!-- Scrollable Container (Vertical on Mobile, Horizontal on Desktop) -->
+            <div id="scrollContainer"
+                class="block lg:flex overflow-y-auto lg:overflow-x-auto max-h-screen h-[60vh] items-center px-10 space-y-6 lg:space-y-0 lg:space-x-6 w-full">
 
-                    <!-- card 1 start -->
-                    <div class="h-110 lg:h-80 w-80 lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
+                <!-- Card Container (Prevents Sideways Movement on Mobile) -->
+                <div class="block lg:flex space-y-6 lg:space-y-0 lg:space-x-6 w-full lg:min-w-full">
+
+                    <!-- Single Card -->
+                    <div
+                        class="h-110 lg:h-80 w-full lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
                         <img class="w-32 lg:w-40 flex-shrink-0" src="./src/img/pests/snake.png" alt="snake image">
                         <div class="text-center lg:text-left">
                             <strong class="block mx-auto py-2 text-2xl">Snake Control Service</strong>
@@ -45,10 +49,10 @@
                             </p>
                         </div>
                     </div>
-                    <!-- card 1 end -->
 
-                    <!-- card 2 start -->            
-                    <div class="h-110 lg:h-80 w-80 lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
+                    <!-- Duplicate Card (Repeat as Needed) -->
+                    <div
+                        class="h-110 lg:h-80 w-full lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
                         <img class="w-32 lg:w-40 flex-shrink-0" src="./src/img/pests/snake.png" alt="snake image">
                         <div class="text-center lg:text-left">
                             <strong class="block mx-auto py-2 text-2xl">Snake Control Service</strong>
@@ -57,61 +61,12 @@
                             </p>
                         </div>
                     </div>
-                    <!-- card 2 end -->
-
-                    <!-- card 1 start -->
-                    <div class="h-110 lg:h-80 w-80 lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
-                        <img class="w-32 lg:w-40 flex-shrink-0" src="./src/img/pests/snake.png" alt="snake image">
-                        <div class="text-center lg:text-left">
-                            <strong class="block mx-auto py-2 text-2xl">Snake Control Service</strong>
-                            <p class="text-[16px]">
-                                Rate depends on area size and can be quoted upon inspection.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- card 1 end -->
-
-                    <!-- card 2 start -->            
-                    <div class="h-110 lg:h-80 w-80 lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
-                        <img class="w-32 lg:w-40 flex-shrink-0" src="./src/img/pests/snake.png" alt="snake image">
-                        <div class="text-center lg:text-left">
-                            <strong class="block mx-auto py-2 text-2xl">Snake Control Service</strong>
-                            <p class="text-[16px]">
-                                Rate depends on area size and can be quoted upon inspection.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- card 2 end -->
-
-                    <!-- card 1 start -->
-                    <div class="h-110 lg:h-80 w-80 lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
-                        <img class="w-32 lg:w-40 flex-shrink-0" src="./src/img/pests/snake.png" alt="snake image">
-                        <div class="text-center lg:text-left">
-                            <strong class="block mx-auto py-2 text-2xl">Snake Control Service</strong>
-                            <p class="text-[16px]">
-                                Rate depends on area size and can be quoted upon inspection.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- card 1 end -->
-
-                    <!-- card 2 start -->            
-                    <div class="h-110 lg:h-80 w-80 lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
-                        <img class="w-32 lg:w-40 flex-shrink-0" src="./src/img/pests/snake.png" alt="snake image">
-                        <div class="text-center lg:text-left">
-                            <strong class="block mx-auto py-2 text-2xl">Snake Control Service</strong>
-                            <p class="text-[16px]">
-                                Rate depends on area size and can be quoted upon inspection.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- card 2 end -->     
 
                 </div>
-                <!-- Card Container -->
             </div>
-            <!-- Hoziratal scroll bar code end -->                         
-            
+
+            <!-- Hoziratal scroll bar code end -->
+
         </div>
     </main>
     <!-- cards End -->
