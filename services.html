@@ -29,35 +29,88 @@
     <!-- cards start -->
     <main class="mt-26 p-6 h-min-screen">
         <div class="container mx-auto py-10">
-            <div class="grid mx-auto gap-10 justify-items-center grid-wrap md:grid-cols-2 justify-evenly">
 
-                <!-- card 1 Start-->
-                <div
-                    class="h-110 lg:h-80 w-80 lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg">
-                    <img class="relative w-40" src="./src/img/pests/snake.png" alt="snake image">
-                    <div>
-                        <strong class="block mx-auto py-2 text-2xl">Snake Control Service</strong>
-                        <p class="text-justify text-[16px]">
-                            Rate depends on area size and can be quoted upon inspection.
-                        </p>
+            <div class="flex overflow-x-auto scrollbar-none scrollbar-hide h-[60vh] items-center px-10 space-x-6">
+                <!-- Card Container -->
+                <div class="flex space-x-6"> 
+            
+                    <div class="h-110 lg:h-80 w-80 lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
+                        <img class="w-32 lg:w-40 flex-shrink-0" src="./src/img/pests/snake.png" alt="snake image">
+                        <div class="text-center lg:text-left">
+                            <strong class="block mx-auto py-2 text-2xl">Snake Control Service</strong>
+                            <p class="text-[16px]">
+                                Rate depends on area size and can be quoted upon inspection.
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="h-110 lg:h-80 w-80 lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
+                        <img class="w-32 lg:w-40 flex-shrink-0" src="./src/img/pests/snake.png" alt="snake image">
+                        <div class="text-center lg:text-left">
+                            <strong class="block mx-auto py-2 text-2xl">Snake Control Service</strong>
+                            <p class="text-[16px]">
+                                Rate depends on area size and can be quoted upon inspection.
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="h-110 lg:h-80 w-80 lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
+                        <img class="w-32 lg:w-40 flex-shrink-0" src="./src/img/pests/snake.png" alt="snake image">
+                        <div class="text-center lg:text-left">
+                            <strong class="block mx-auto py-2 text-2xl">Snake Control Service</strong>
+                            <p class="text-[16px]">
+                                Rate depends on area size and can be quoted upon inspection.
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="h-110 lg:h-80 w-80 lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
+                        <img class="w-32 lg:w-40 flex-shrink-0" src="./src/img/pests/snake.png" alt="snake image">
+                        <div class="text-center lg:text-left">
+                            <strong class="block mx-auto py-2 text-2xl">Snake Control Service</strong>
+                            <p class="text-[16px]">
+                                Rate depends on area size and can be quoted upon inspection.
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="h-110 lg:h-80 w-80 lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
+                        <img class="w-32 lg:w-40 flex-shrink-0" src="./src/img/pests/snake.png" alt="snake image">
+                        <div class="text-center lg:text-left">
+                            <strong class="block mx-auto py-2 text-2xl">Snake Control Service</strong>
+                            <p class="text-[16px]">
+                                Rate depends on area size and can be quoted upon inspection.
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="h-110 lg:h-80 w-80 lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
+                        <img class="w-32 lg:w-40 flex-shrink-0" src="./src/img/pests/snake.png" alt="snake image">
+                        <div class="text-center lg:text-left">
+                            <strong class="block mx-auto py-2 text-2xl">Snake Control Service</strong>
+                            <p class="text-[16px]">
+                                Rate depends on area size and can be quoted upon inspection.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <!-- card 1 End-->
-
-                <!-- card 1 Start-->
-                <div
-                    class="h-110 lg:h-80 w-80 lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg">
-                    <img class="relative w-40" src="./src/img/pests/snake.png" alt="snake image">
-                    <div>
-                        <strong class="block mx-auto py-2 text-2xl">Snake Control Service</strong>
-                        <p class="text-justify text-[16px]">
-                            Rate depends on area size and can be quoted upon inspection.
-                        </p>
-                    </div>
-                </div>
-                <!-- card 1 End-->
- 
+            
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const scrollContainer = document.querySelector(".overflow-x-auto");
+            
+                        if (scrollContainer) {
+                            scrollContainer.addEventListener("wheel", (event) => {
+                                event.preventDefault();
+                                scrollContainer.scrollLeft += event.deltaY;
+                            });
+                        }
+                    });
+                </script>
             </div>
+            
+            
+
         </div>
     </main>
     <!-- cards End -->
