@@ -30,4 +30,14 @@ li {
 .scrollContainer {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  scroll-behavior: smooth;
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+/* Card hover effect */
+.scrollContainer .flex > div:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
 }
