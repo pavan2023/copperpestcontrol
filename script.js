@@ -52,3 +52,16 @@ function attachMenuToggle() {
 }
 // Navbar toggle function end
 
+// horizontal scroll start
+document.addEventListener("DOMContentLoaded", function () {
+    const scrollContainer = document.querySelector(".overflow-x-auto");
+
+    if (scrollContainer) {
+        scrollContainer.addEventListener("wheel", (event) => {
+            event.preventDefault();
+            scrollContainer.scrollLeft += event.deltaY;
+        });
+    }
+});
+// horizontal scroll end
+
