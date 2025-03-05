@@ -22,15 +22,3 @@ li {
   right: -1.5rem;
 }
  
- /* horizontal scroll bar styles */
- #scrollContainer::-webkit-scrollbar {
-  display: none; /* For Chrome, Safari, and Opera */
-}
-
-#scrollContainer {
-  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
-  scrollbar-width: none;  /* For Firefox */
-}
- /* horizontal scroll bar styles */
-
- 

@@ -52,15 +52,3 @@ function attachMenuToggle() {
 }
 // Navbar toggle function end
 
-// Horizontal scroll code start
-document.addEventListener("DOMContentLoaded", function () {
-    const scrollContainer = document.getElementById("scrollContainer");
-
-    if (scrollContainer) {
-        scrollContainer.addEventListener("wheel", (event) => {
-            event.preventDefault();
-            scrollContainer.scrollLeft += event.deltaY;
-        });
-    }
-});
-// Horizontal scroll code end

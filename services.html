@@ -30,17 +30,51 @@
     <main class="mt-26 p-6 h-min-screen">
         <div class="container mx-auto py-10">
 
-            <!-- Hoziratal scroll bar code start -->
-            <!-- Scrollable Container (Vertical on Mobile, Horizontal on Desktop) -->
-            <div id="scrollContainer"
-                class="block lg:flex overflow-y-auto lg:overflow-x-auto max-h-screen h-[60vh] items-center px-10 space-y-6 lg:space-y-0 lg:space-x-6 w-full">
-
-                <!-- Card Container (Prevents Sideways Movement on Mobile) -->
-                <div class="block lg:flex space-y-6 lg:space-y-0 lg:space-x-6 w-full lg:min-w-full">
-
-                    <!-- Single Card -->
-                    <div
-                        class="h-110 lg:h-80 w-full lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
+            <div class="flex overflow-x-auto scrollbar-none scrollbar-hide h-[60vh] items-center px-10 space-x-6">
+                <!-- Card Container -->
+                <div class="flex space-x-6"> 
+            
+                    <div class="h-110 lg:h-80 w-80 lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
+                        <img class="w-32 lg:w-40 flex-shrink-0" src="./src/img/pests/snake.png" alt="snake image">
+                        <div class="text-center lg:text-left">
+                            <strong class="block mx-auto py-2 text-2xl">Snake Control Service</strong>
+                            <p class="text-[16px]">
+                                Rate depends on area size and can be quoted upon inspection.
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="h-110 lg:h-80 w-80 lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
+                        <img class="w-32 lg:w-40 flex-shrink-0" src="./src/img/pests/snake.png" alt="snake image">
+                        <div class="text-center lg:text-left">
+                            <strong class="block mx-auto py-2 text-2xl">Snake Control Service</strong>
+                            <p class="text-[16px]">
+                                Rate depends on area size and can be quoted upon inspection.
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="h-110 lg:h-80 w-80 lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
+                        <img class="w-32 lg:w-40 flex-shrink-0" src="./src/img/pests/snake.png" alt="snake image">
+                        <div class="text-center lg:text-left">
+                            <strong class="block mx-auto py-2 text-2xl">Snake Control Service</strong>
+                            <p class="text-[16px]">
+                                Rate depends on area size and can be quoted upon inspection.
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="h-110 lg:h-80 w-80 lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
+                        <img class="w-32 lg:w-40 flex-shrink-0" src="./src/img/pests/snake.png" alt="snake image">
+                        <div class="text-center lg:text-left">
+                            <strong class="block mx-auto py-2 text-2xl">Snake Control Service</strong>
+                            <p class="text-[16px]">
+                                Rate depends on area size and can be quoted upon inspection.
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="h-110 lg:h-80 w-80 lg:w-120 bg-zinc-300 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0">
                         <img class="w-32 lg:w-40 flex-shrink-0" src="./src/img/pests/snake.png" alt="snake image">
                         <div class="text-center lg:text-left">
                             <strong class="block mx-auto py-2 text-2xl">Snake Control Service</strong>
@@ -63,9 +97,22 @@
                     </div>
 
                 </div>
+            
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const scrollContainer = document.querySelector(".overflow-x-auto");
+            
+                        if (scrollContainer) {
+                            scrollContainer.addEventListener("wheel", (event) => {
+                                event.preventDefault();
+                                scrollContainer.scrollLeft += event.deltaY;
+                            });
+                        }
+                    });
+                </script>
             </div>
-
-            <!-- Hoziratal scroll bar code end -->
+            
+            
 
         </div>
     </main>
