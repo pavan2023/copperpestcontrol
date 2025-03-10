@@ -78,98 +78,95 @@
                 </strong>
 
                 <form id="pestControlForm" class="space-y-4 md:grid md:grid-cols-2 md:gap-6 p-6 bg-white shadow-lg rounded-xl">
-                    <input type="text" id="name" placeholder="Full Name" required 
-                        class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl focus:border-[#6EAF9E] focus:ring-2 focus:ring-[#6EAF9E]">
+                    <input type="text" id="name" placeholder="Full Name" required class="form-input">
+                    <input type="tel" id="phone" placeholder="Phone Number" required class="form-input">
+                    <input type="email" id="email" placeholder="Email Address (Optional)" class="form-input">
+                    <input type="text" id="address" placeholder="Full Address" required class="form-input">
+                    <input type="text" id="propertySize" placeholder="Property Size (e.g., 3BHK, 2000 sqft)" required class="form-input">
                     
-                    <input type="tel" id="phone" placeholder="Phone Number" required 
-                        class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl focus:border-[#6EAF9E] focus:ring-2 focus:ring-[#6EAF9E]">
-                
-                    <input type="email" id="email" placeholder="Email Address" required
-                        class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl focus:border-[#6EAF9E] focus:ring-2 focus:ring-[#6EAF9E]">
-                
-                    <input type="text" id="address" placeholder="Full Address" required
-                        class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl focus:border-[#6EAF9E] focus:ring-2 focus:ring-[#6EAF9E]">
-                
-                    <input type="text" id="propertySize" placeholder="Property Size (e.g., 3BHK, 2000 sqft)" required
-                        class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl focus:border-[#6EAF9E] focus:ring-2 focus:ring-[#6EAF9E]">
-                
-                    <!-- Service Type Dropdown -->
-                    <select id="serviceType" required class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl bg-white">
-                        <option selected disabled value="">Select Service Type</option>
-                        <option value="general">General Pest Control</option>
-                        <option value="termite">Termite Treatment</option>
-                        <option value="rodent">Rodent Control</option>
-                        <option value="mosquito">Mosquito Control</option>
-                    </select>
-                
-                    <!-- Pest Problem Dropdown -->
-                    <select id="pestProblem" required class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl bg-white">
-                        <option selected disabled value="">Select Pest Problem</option>
-                        <option value="ants">Ants</option>
-                        <option value="cockroach">Cockroaches</option>
-                        <option value="rodents">Rodents</option>
-                        <option value="termites">Termites</option>
-                        <option value="bedbugs">Bed Bugs</option>
-                    </select>
-                
-                    <!-- Preferred Date -->
-                    <input type="date" id="preferredDate" required
-                        class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl focus:border-[#6EAF9E] focus:ring-2 focus:ring-[#6EAF9E]">
-                
-                    <!-- Preferred Time Dropdown -->
-                    <select id="preferredTime" required class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl bg-white">
+                    <!-- Date & Time -->
+                    <input type="date" id="preferredDate" required class="form-input">
+                    <select id="preferredTime" required class="form-input">
                         <option selected disabled value="">Select Preferred Time</option>
                         <option value="morning">Morning (9 AM - 12 PM)</option>
                         <option value="afternoon">Afternoon (12 PM - 4 PM)</option>
                         <option value="evening">Evening (4 PM - 7 PM)</option>
                     </select>
                 
-                    <!-- Additional Notes -->
-                    <textarea id="notes" placeholder="Additional Notes (Optional)" rows="3"
-                        class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl focus:border-[#6EAF9E] focus:ring-2 focus:ring-[#6EAF9E]"></textarea>
+                    <!-- Service Type -->
+                    <select id="serviceType" required class="form-input">
+                        <option selected disabled value="">Select Service Type</option>
+                        <option value="single">Single Service</option>
+                        <option value="package">Package</option>
+                    </select>
                 
-                    <!-- Submit Button -->
-                    <button type="submit"
-                        class="block mx-auto col-span-2 w-[300px] bg-[#6EAF9E] font-semibold text-white px-4 py-2 rounded-4xl hover:bg-[#468070] md:py-3 lg:px-6 transition">
-                        Submit
-                    </button>
+                    <!-- Package Options -->
+                    <div id="packageOptions" class="hidden md:col-span-2">
+                        <label><input type="checkbox" value="cockroach-bedbug"> Cockroach + Bedbug</label>
+                        <label><input type="checkbox" value="termite"> Termite Control</label>
+                        <label><input type="checkbox" value="mosquito"> Mosquito Control</label>
+                    </div>
+                    
+                    <!-- Single Service Options -->
+                    <select id="singleService" class="hidden form-input">
+                        <option selected disabled value="">Select Single Service</option>
+                        <option value="cockroach">Cockroach Control</option>
+                        <option value="bedbug">Bedbug Treatment</option>
+                        <option value="termite">Termite Treatment</option>
+                        <option value="mosquito">Mosquito Control</option>
+                    </select>
+                    
+                    <!-- Service Duration -->
+                    <select id="serviceDuration" required class="form-input">
+                        <option selected disabled value="">Select Service Duration</option>
+                        <option value="one-time">One Time</option>
+                        <option value="two-times">Two Times</option>
+                        <option value="quarterly">Quarterly</option>
+                        <option value="half-yearly">Half Yearly</option>
+                        <option value="annually">Annually</option>
+                    </select>
+                
+                    <!-- Price Calculation -->
+                    <div class="md:col-span-2">
+                        <p id="totalPrice" class="text-lg font-semibold">Total Price: $0</p>
+                    </div>
+                    
+                    <!-- Checkout Button -->
+                    <button type="submit" class="submit-btn">Checkout</button>
                 </form>
                 
-                <!-- JavaScript for Form Handling -->
                 <script>
-                    document.getElementById("pestControlForm").addEventListener("submit", function(event) {
-                        event.preventDefault(); // Prevent page reload
+                    document.getElementById("serviceType").addEventListener("change", function() {
+                        let type = this.value;
+                        document.getElementById("packageOptions").classList.toggle("hidden", type !== "package");
+                        document.getElementById("singleService").classList.toggle("hidden", type !== "single");
+                    });
                 
-                        // Get Form Data
-                        const formData = {
-                            name: document.getElementById("name").value.trim(),
-                            phone: document.getElementById("phone").value.trim(),
-                            email: document.getElementById("email").value.trim(),
-                            address: document.getElementById("address").value.trim(),
-                            propertySize: document.getElementById("propertySize").value.trim(),
-                            serviceType: document.getElementById("serviceType").value,
-                            pestProblem: document.getElementById("pestProblem").value,
-                            preferredDate: document.getElementById("preferredDate").value,
-                            preferredTime: document.getElementById("preferredTime").value,
-                            notes: document.getElementById("notes").value.trim()
-                        };
-                
-                        // Validation Check
-                        if (!formData.name || !formData.phone || !formData.email || !formData.address || !formData.propertySize ||
-                            !formData.serviceType || !formData.pestProblem || !formData.preferredDate || !formData.preferredTime) {
-                            alert("Please fill in all required fields.");
-                            return;
+                    document.getElementById("pestControlForm").addEventListener("change", function() {
+                        let price = 0;
+                        if (document.getElementById("serviceType").value === "single") {
+                            let service = document.getElementById("singleService").value;
+                            if (service === "cockroach") price = 50;
+                            if (service === "bedbug") price = 80;
+                            if (service === "termite") price = 120;
+                            if (service === "mosquito") price = 60;
+                        } else {
+                            document.querySelectorAll("#packageOptions input:checked").forEach(service => {
+                                if (service.value === "cockroach-bedbug") price += 100;
+                                if (service.value === "termite") price += 150;
+                                if (service.value === "mosquito") price += 90;
+                            });
                         }
-                
-                        // Simulate Form Submission (Replace this with an actual backend call)
-                        console.log("Form Submitted Successfully!", formData);
-                        alert("Thank you! Your request has been submitted.");
-                
-                        // Clear Form After Submission
-                        document.getElementById("pestControlForm").reset();
+                        document.getElementById("totalPrice").textContent = "Total Price: $" + price;
                     });
                 </script>
                 
+                <style>
+                    .form-input { width: 100%; padding: 12px; border: 2px solid #ccc; border-radius: 10px; }
+                    .hidden { display: none; }
+                    .submit-btn { background: #6EAF9E; color: white; padding: 12px 20px; border-radius: 10px; }
+                </style>
+                    
             </div>
 
             <div class="md:w-4/5 md:mx-auto py-6 md:pt-8">
