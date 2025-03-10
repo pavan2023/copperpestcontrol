@@ -77,31 +77,99 @@
                     Schedule a Service
                 </strong>
 
-                <form action="" class="">
-                    <div class="space-y-4 md:grid md:grid-cols-2 md:gap-6">
-                        <input type="text" placeholder="Name"
-                            class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
-
-                        <input type="tel" placeholder="Phone"
-                            class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
-                        <input type="text" placeholder="Address"
-                            class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
-                        <input type="text" placeholder="Property Size"
-                            class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
-                        <input type="text" placeholder="Select Service type"
-                            class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
-                        <input type="text" placeholder="Pest problem"
-                            class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
-                        <input type="text" placeholder="Preferred Date"
-                            class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
-                        <input type="text" placeholder="Preferred Time"
-                            class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
-                        <button type="submit"
-                            class="block mx-auto col-span-2 w-[300px] bg-[#6EAF9E] font-semibold text-white px-4 py-2 rounded-4xl hover:bg-[#468070] md:py-3 lg:px-6">
-                            Submit
-                        </button>
-                    </div>
+                <form id="pestControlForm" class="space-y-4 md:grid md:grid-cols-2 md:gap-6 p-6 bg-white shadow-lg rounded-xl">
+                    <input type="text" id="name" placeholder="Full Name" required 
+                        class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl focus:border-[#6EAF9E] focus:ring-2 focus:ring-[#6EAF9E]">
+                    
+                    <input type="tel" id="phone" placeholder="Phone Number" required 
+                        class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl focus:border-[#6EAF9E] focus:ring-2 focus:ring-[#6EAF9E]">
+                
+                    <input type="email" id="email" placeholder="Email Address" required
+                        class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl focus:border-[#6EAF9E] focus:ring-2 focus:ring-[#6EAF9E]">
+                
+                    <input type="text" id="address" placeholder="Full Address" required
+                        class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl focus:border-[#6EAF9E] focus:ring-2 focus:ring-[#6EAF9E]">
+                
+                    <input type="text" id="propertySize" placeholder="Property Size (e.g., 3BHK, 2000 sqft)" required
+                        class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl focus:border-[#6EAF9E] focus:ring-2 focus:ring-[#6EAF9E]">
+                
+                    <!-- Service Type Dropdown -->
+                    <select id="serviceType" required class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl bg-white">
+                        <option selected disabled value="">Select Service Type</option>
+                        <option value="general">General Pest Control</option>
+                        <option value="termite">Termite Treatment</option>
+                        <option value="rodent">Rodent Control</option>
+                        <option value="mosquito">Mosquito Control</option>
+                    </select>
+                
+                    <!-- Pest Problem Dropdown -->
+                    <select id="pestProblem" required class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl bg-white">
+                        <option selected disabled value="">Select Pest Problem</option>
+                        <option value="ants">Ants</option>
+                        <option value="cockroach">Cockroaches</option>
+                        <option value="rodents">Rodents</option>
+                        <option value="termites">Termites</option>
+                        <option value="bedbugs">Bed Bugs</option>
+                    </select>
+                
+                    <!-- Preferred Date -->
+                    <input type="date" id="preferredDate" required
+                        class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl focus:border-[#6EAF9E] focus:ring-2 focus:ring-[#6EAF9E]">
+                
+                    <!-- Preferred Time Dropdown -->
+                    <select id="preferredTime" required class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl bg-white">
+                        <option selected disabled value="">Select Preferred Time</option>
+                        <option value="morning">Morning (9 AM - 12 PM)</option>
+                        <option value="afternoon">Afternoon (12 PM - 4 PM)</option>
+                        <option value="evening">Evening (4 PM - 7 PM)</option>
+                    </select>
+                
+                    <!-- Additional Notes -->
+                    <textarea id="notes" placeholder="Additional Notes (Optional)" rows="3"
+                        class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl focus:border-[#6EAF9E] focus:ring-2 focus:ring-[#6EAF9E]"></textarea>
+                
+                    <!-- Submit Button -->
+                    <button type="submit"
+                        class="block mx-auto col-span-2 w-[300px] bg-[#6EAF9E] font-semibold text-white px-4 py-2 rounded-4xl hover:bg-[#468070] md:py-3 lg:px-6 transition">
+                        Submit
+                    </button>
                 </form>
+                
+                <!-- JavaScript for Form Handling -->
+                <script>
+                    document.getElementById("pestControlForm").addEventListener("submit", function(event) {
+                        event.preventDefault(); // Prevent page reload
+                
+                        // Get Form Data
+                        const formData = {
+                            name: document.getElementById("name").value.trim(),
+                            phone: document.getElementById("phone").value.trim(),
+                            email: document.getElementById("email").value.trim(),
+                            address: document.getElementById("address").value.trim(),
+                            propertySize: document.getElementById("propertySize").value.trim(),
+                            serviceType: document.getElementById("serviceType").value,
+                            pestProblem: document.getElementById("pestProblem").value,
+                            preferredDate: document.getElementById("preferredDate").value,
+                            preferredTime: document.getElementById("preferredTime").value,
+                            notes: document.getElementById("notes").value.trim()
+                        };
+                
+                        // Validation Check
+                        if (!formData.name || !formData.phone || !formData.email || !formData.address || !formData.propertySize ||
+                            !formData.serviceType || !formData.pestProblem || !formData.preferredDate || !formData.preferredTime) {
+                            alert("Please fill in all required fields.");
+                            return;
+                        }
+                
+                        // Simulate Form Submission (Replace this with an actual backend call)
+                        console.log("Form Submitted Successfully!", formData);
+                        alert("Thank you! Your request has been submitted.");
+                
+                        // Clear Form After Submission
+                        document.getElementById("pestControlForm").reset();
+                    });
+                </script>
+                
             </div>
 
             <div class="md:w-4/5 md:mx-auto py-6 md:pt-8">
