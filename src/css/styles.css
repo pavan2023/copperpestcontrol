@@ -21,7 +21,7 @@ li {
   position: relative;
   right: -1.5rem;
 }
- 
+
 /* Hide scrollbar */
 .scrollContainer::-webkit-scrollbar {
   display: none;
@@ -40,4 +40,20 @@ li {
 .scrollContainer .flex > div:hover {
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+
+.submit-btn {
+  background: #6eaf9e;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  display: block;
+  text-align: center;
 }

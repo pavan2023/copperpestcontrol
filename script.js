@@ -8,7 +8,6 @@ window.onload = function () {
 };
 // Spline code End
 
-
 // Component reusable code start
 function loadContent(section, file, callback) {
   fetch(file)
@@ -30,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // Component reusable code end
 
-
 // Year update code start
 function updateYear() {
   const yearSpan = document.getElementById("year");
@@ -41,7 +39,6 @@ function updateYear() {
   }
 }
 // Year update code end
-
 
 // Navbar toggle function start
 function attachMenuToggle() {
@@ -55,7 +52,6 @@ function attachMenuToggle() {
   }
 }
 // Navbar toggle function end
-
 
 // horizontal scroll start
 document.addEventListener("DOMContentLoaded", function () {
@@ -92,4 +88,58 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // horizontal scroll end
 
+// form functionality start
+function updatePrice() {
+  let price = 0;
+  if (document.getElementById("serviceType").value === "single") {
+    let service = document.getElementById("singleService").value;
+    if (service === "cockroach") price = 50;
+    if (service === "bedbug") price = 80;
+    if (service === "termite") price = 120;
+    if (service === "mosquito") price = 60;
+  } else {
+    document
+      .querySelectorAll("#packageOptions input:checked")
+      .forEach((service) => {
+        if (service.value === "cockroach-bedbug") price += 100;
+        if (service.value === "termite") price += 150;
+        if (service.value === "mosquito") price += 90;
+      });
+  }
+  if (document.getElementById("emergencyService").checked) {
+    price += 30;
+  }
+  document.getElementById("totalPrice").textContent = "Total Price: $" + price;
+}
 
+document.getElementById("serviceType").addEventListener("change", function () {
+  let type = this.value;
+  document
+    .getElementById("packageOptions")
+    .classList.toggle("hidden", type !== "package");
+  document
+    .getElementById("singleService")
+    .classList.toggle("hidden", type !== "single");
+});
+
+document
+  .getElementById("pestControlForm")
+  .addEventListener("change", updatePrice);
+
+document
+  .getElementById("pestControlForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let address = document.getElementById("address").value;
+    let serviceType = document.getElementById("serviceType").value;
+    let totalPrice = document.getElementById("totalPrice").textContent;
+
+    let message = `Hi, I want to book a pest control service.\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\nService Type: ${serviceType}\n${totalPrice}`;
+    let whatsappURL = `https://wa.me/YOUR_NUMBER?text=${encodeURIComponent(
+      message
+    )}`;
+    document.getElementById("whatsappLink").setAttribute("href", whatsappURL);
+  });
+// form functionality end
