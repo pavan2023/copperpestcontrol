@@ -77,112 +77,31 @@
                     Schedule a Service
                 </strong>
 
-                <form id="pestControlForm" class="space-y-4 md:grid md:grid-cols-2 md:gap-6 p-6 bg-white shadow-lg rounded-xl">
-                    <input type="text" id="name" placeholder="Full Name" required class="form-input">
-                    <input type="tel" id="phone" placeholder="Phone Number" required class="form-input">
-                    <input type="email" id="email" placeholder="Email Address (Optional)" class="form-input">
-                    <input type="text" id="address" placeholder="Full Address" required class="form-input">
-                    <input type="text" id="propertySize" placeholder="Property Size (e.g., 3BHK, 2000 sqft)" required class="form-input">
-                    
-                    <input type="date" id="preferredDate" required class="form-input">
-                    <select id="preferredTime" required class="form-input">
-                        <option selected disabled value="">Select Preferred Time</option>
-                        <option value="morning">Morning (9 AM - 12 PM)</option>
-                        <option value="afternoon">Afternoon (12 PM - 4 PM)</option>
-                        <option value="evening">Evening (4 PM - 7 PM)</option>
-                    </select>
-                
-                    <select id="serviceType" required class="form-input">
-                        <option selected disabled value="">Select Service Type</option>
-                        <option value="single">Single Service</option>
-                        <option value="package">Package</option>
-                    </select>
-                
-                    <div id="packageOptions" class="hidden md:col-span-2">
-                        <label><input type="checkbox" value="cockroach-bedbug"> Cockroach + Bedbug</label>
-                        <label><input type="checkbox" value="termite"> Termite Control</label>
-                        <label><input type="checkbox" value="mosquito"> Mosquito Control</label>
+                <form action="" class="">
+                    <div class="space-y-4 md:grid md:grid-cols-2 md:gap-6">
+                        <input type="text" placeholder="Name"
+                            class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
+
+                        <input type="tel" placeholder="Phone"
+                            class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
+                        <input type="text" placeholder="Address"
+                            class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
+                        <input type="text" placeholder="Property Size"
+                            class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
+                        <input type="text" placeholder="Select Service type"
+                            class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
+                        <input type="text" placeholder="Pest problem"
+                            class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
+                        <input type="text" placeholder="Preferred Date"
+                            class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
+                        <input type="text" placeholder="Preferred Time"
+                            class="w-full pl-6 py-3 border-2 border-gray-300 rounded-2xl">
+                        <button type="submit"
+                            class="block mx-auto col-span-2 w-[300px] bg-[#6EAF9E] font-semibold text-white px-4 py-2 rounded-4xl hover:bg-[#468070] md:py-3 lg:px-6">
+                            Submit
+                        </button>
                     </div>
-                    
-                    <select id="singleService" class="hidden form-input">
-                        <option selected disabled value="">Select Single Service</option>
-                        <option value="cockroach">Cockroach Control</option>
-                        <option value="bedbug">Bedbug Treatment</option>
-                        <option value="termite">Termite Treatment</option>
-                        <option value="mosquito">Mosquito Control</option>
-                    </select>
-                    
-                    <select id="serviceDuration" required class="form-input">
-                        <option selected disabled value="">Select Service Duration</option>
-                        <option value="one-time">One Time</option>
-                        <option value="two-times">Two Times</option>
-                        <option value="quarterly">Quarterly</option>
-                        <option value="half-yearly">Half Yearly</option>
-                        <option value="annually">Annually</option>
-                    </select>
-                
-                    <input type="text" id="discountCode" placeholder="Enter Discount Code" class="form-input">
-                    <label class="md:col-span-2"><input type="checkbox" id="emergencyService"> Need Emergency Service? (+$30)</label>
-                    
-                    <div class="md:col-span-2">
-                        <p id="totalPrice" class="text-lg font-semibold">Total Price: $0</p>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Checkout</button>
-                    <a id="whatsappLink" href="#" class="submit-btn bg-green-500">Chat on WhatsApp</a>
                 </form>
-                
-                <script>
-                    function updatePrice() {
-                        let price = 0;
-                        if (document.getElementById("serviceType").value === "single") {
-                            let service = document.getElementById("singleService").value;
-                            if (service === "cockroach") price = 50;
-                            if (service === "bedbug") price = 80;
-                            if (service === "termite") price = 120;
-                            if (service === "mosquito") price = 60;
-                        } else {
-                            document.querySelectorAll("#packageOptions input:checked").forEach(service => {
-                                if (service.value === "cockroach-bedbug") price += 100;
-                                if (service.value === "termite") price += 150;
-                                if (service.value === "mosquito") price += 90;
-                            });
-                        }
-                        if (document.getElementById("emergencyService").checked) {
-                            price += 30;
-                        }
-                        document.getElementById("totalPrice").textContent = "Total Price: $" + price;
-                    }
-                
-                    document.getElementById("serviceType").addEventListener("change", function() {
-                        let type = this.value;
-                        document.getElementById("packageOptions").classList.toggle("hidden", type !== "package");
-                        document.getElementById("singleService").classList.toggle("hidden", type !== "single");
-                    });
-                    
-                    document.getElementById("pestControlForm").addEventListener("change", updatePrice);
-                
-                    document.getElementById("pestControlForm").addEventListener("submit", function(event) {
-                        event.preventDefault();
-                        let name = document.getElementById("name").value;
-                        let phone = document.getElementById("phone").value;
-                        let address = document.getElementById("address").value;
-                        let serviceType = document.getElementById("serviceType").value;
-                        let totalPrice = document.getElementById("totalPrice").textContent;
-                        
-                        let message = `Hi, I want to book a pest control service.\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\nService Type: ${serviceType}\n${totalPrice}`;
-                        let whatsappURL = `https://wa.me/YOUR_NUMBER?text=${encodeURIComponent(message)}`;
-                        document.getElementById("whatsappLink").setAttribute("href", whatsappURL);
-                    });
-                </script>
-                
-                <style>
-                    .form-input { width: 100%; padding: 12px; border: 2px solid #ccc; border-radius: 10px; }
-                    .hidden { display: none; }
-                    .submit-btn { background: #6EAF9E; color: white; padding: 12px 20px; border-radius: 10px; display: block; text-align: center; }
-                </style>
-                
-                    
             </div>
 
             <div class="md:w-4/5 md:mx-auto py-6 md:pt-8">
