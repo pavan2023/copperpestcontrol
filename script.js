@@ -1,3 +1,5 @@
+
+
 // Spline code Start
 window.onload = function () {
   var splineViewer = document.querySelector("spline-viewer");
@@ -48,9 +50,20 @@ function attachMenuToggle() {
   if (menuToggle && menu) {
     menuToggle.addEventListener("click", function () {
       menu.classList.toggle("hidden");
+
+      // Toggle animation classes
+      this.classList.toggle("open");
+      const lines = this.querySelectorAll(".line");
+      lines[0].classList.toggle("rotate-45");
+      lines[0].classList.toggle("translate-y-[8px]");
+      lines[1].classList.toggle("opacity-0");
+      lines[2].classList.toggle("-rotate-45");
+      lines[2].classList.toggle("-translate-y-[8px]");
     });
   }
 }
+
+document.addEventListener("DOMContentLoaded", attachMenuToggle);
 // Navbar toggle function end
 
 // horizontal scroll start
