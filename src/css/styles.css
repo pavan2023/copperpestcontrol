@@ -42,18 +42,36 @@ li {
   transition: transform 0.3s ease-in-out;
 }
 
-.form-input {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid #ccc;
-  border-radius: 10px;
+select {
+    appearance: none; /* Removes default dropdown styling */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 2.5rem; /* Ensures space for the arrow */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='16' height='16' fill='%23222222'><path d='M7 10l5 5 5-5z'/></svg>"); /* Custom dropdown arrow */
+    background-repeat: no-repeat;
+    background-position: right 1rem center; /* Positions the arrow */
+    background-size: 1rem;
 }
 
-.submit-btn {
-  background: #6eaf9e;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 10px;
-  display: block;
-  text-align: center;
+input[type="date"] {
+    appearance: auto; /* Ensures default browser styling */
+    -webkit-appearance: auto;
+    -moz-appearance: auto;
+    background: white; /* Ensures visibility */
+}
+
+input[type="date"] {
+    appearance: none; /* Removes default styling */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 2.5rem; /* Ensures space for the icon */
+    position: relative;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Makes the icon invisible but clickable */
+    cursor: pointer;
 }

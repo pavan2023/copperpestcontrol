@@ -34,25 +34,41 @@
     <!-- navbar end -->
 
     <!-- hero section start -->
-    <main class="mt-26 lg:mt-10 p-6 min-h-screen max-h-max lg:h-screen flex">
+    <main class="mt-26 lg:mt-10 p-6 min-h-content lg:max-h-screen lg:h-screen flex">
         <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center pt-4">
             <div class="flex flex-col justify-center space-y-14">
-                <strong class="text-[31px]  leading-relaxed text-center xl:text-4xl">
+                <strong class="text-[31px] leading-relaxed text-center xl:text-4xl">
                     Fast, Reliable, and Eco-Friendly Pest Control at Lower Prices
-                </strong>
+                </strong> 
 
-                <div
-                    class="w-full flex flex-col space-y-6 mx-auto justify-between items-center md:justify-around md:flex-row md:space-y-0 lg:gap-1 xl:space-y-0 xl:justify-around">
+                <div class="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-10">
+                    <a href="tel:9822690235" class="flex items-center text-2xl text-gray-700 hover:text-[#6EAF9E]">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        9822690235
+                    </a>
+                    <a href="tel:7741890102" class="flex items-center text-2xl text-gray-700 hover:text-[#6EAF9E]">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        7741890102
+                    </a>
+                </div>
+    
+                <div class="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-6">
                     <button
                         class="w-[300px] bg-[#6EAF9E] font-semibold text-white px-4 py-2 rounded-4xl hover:bg-[#468070] md:py-4 lg:px-6">
-                        Book Your Service Now
+                        <a href="#scheduleServiceForm">Book Your Service</a>
                     </button>
                     <button
                         class="w-[300px] bg-[#6EAF9E] font-semibold text-white px-4 py-2 rounded-4xl hover:bg-[#468070] md:py-4 lg:px-6">
-                        Request a Callback
+                        <a href="#callBackForm">Request a Callback</a>
                     </button>
                 </div>
-
+    
                 <p class="text-justify xl:text-xl leading-relaxed">
                     We understand the importance of a pest-free environment, which is why we offer affordable and
                     reliable pest control services without hidden costs. Our expert technicians provide clear
@@ -60,7 +76,7 @@
                     efficient service, we deliver lasting results to protect your home or business from unwanted pests.
                 </p>
             </div>
-
+    
             <div class="flex justify-center p-10">
                 <img src="./src/img/home-img.svg" alt="hero img" class="w-full">
             </div>
@@ -69,7 +85,7 @@
     <!-- hero section end -->
 
     <!-- Schedule a Service form start -->
-    <div class="bg-[#F3F4F6] py-10">
+    <div id="scheduleServiceForm" class="bg-[#F3F4F6] py-10">
         <div class="container p-6 mx-auto grid lg:grid-cols-2 gap-14">
 
             <div class="md:w-4/5 md:mx-auto">
@@ -77,96 +93,145 @@
                     Schedule a Service
                 </strong>
 
-                <form id="pestControlForm"
-                    class="space-y-4 md:grid md:grid-cols-2 md:gap-6 p-6 bg-white shadow-lg rounded-xl">
-                    <input type="text" id="name" placeholder="Full Name" required class="form-input">
-                    <input type="tel" id="phone" placeholder="Phone Number" required class="form-input">
-                    <input type="email" id="email" placeholder="Email Address (Optional)" class="form-input">
-                    <input type="text" id="address" placeholder="Full Address" required class="form-input">
-                    <input type="text" id="propertySize" placeholder="Property Size (e.g., 3BHK, 2000 sqft)" required
-                        class="form-input">
+                <form class="space-y-4 md:gap-6 p-6 bg-white shadow-lg rounded-xl"
+                    action="https://formsubmit.co/pavanchavan094@gmail.com" method="POST">
+                    <input type="text" id="name" name="name" placeholder="Full Name" required
+                        class="w-full px-6 py-3 border-2 border-gray-300 rounded-2xl">
+                    <input type="tel" id="phone" name="phone" placeholder="Phone Number" required
+                        class="w-full px-6 py-3 border-2 border-gray-300 rounded-2xl">
+                    <input type="email" id="email" name="email" placeholder="Email Address (Optional)"
+                        class="w-full px-6 py-3 border-2 border-gray-300 rounded-2xl">
+                    <input type="text" id="address" name="address" placeholder="Full Address" required
+                        class="w-full px-6 py-3 border-2 border-gray-300 rounded-2xl">
 
-                    <input type="date" id="preferredDate" required class="form-input">
-                    <select id="preferredTime" required class="form-input">
+                    <input type="date" id="preferredDate" name="preferredDate" required
+                        class="w-full px-6 py-3 border-2 border-gray-300 rounded-2xl">
+                    <select id="preferredTime" name="preferredTime" required
+                        class="w-full px-6 py-3 border-2 border-gray-300 rounded-2xl">
                         <option selected disabled value="">Select Preferred Time</option>
                         <option value="morning">Morning (9 AM - 12 PM)</option>
                         <option value="afternoon">Afternoon (12 PM - 4 PM)</option>
                         <option value="evening">Evening (4 PM - 7 PM)</option>
                     </select>
 
-                    <select id="serviceType" required class="form-input">
+                    <select id="property-size" name="propertySize" required class="w-full px-6 py-3 border-2 border-gray-300 rounded-2xl">
+                        <option selected disabled value="">Select Property Size</option>
+                        <option value="1RK">1RK</option>
+                        <option value="1BHK">1BHK</option>
+                        <option value="2BHK">2BHK</option>
+                        <option value="3BHK">3BHK</option>
+                        <option value="4BHK">4BHK</option>
+                        <option value="other">Other (Specify Below)</option>
+                    </select>
+                    
+                    <div id="otherPropertySizeInput" class="hidden mt-2">
+                        <input type="text" name="otherPropertySize" placeholder="Enter Property Size"
+                            class="w-full px-6 py-3 border-2 border-gray-300 rounded-2xl">
+                    </div>
+
+                    <select id="service-type" name="serviceType" required
+                        class="w-full px-6 py-3 border-2 border-gray-300 rounded-2xl">
                         <option selected disabled value="">Select Service Type</option>
                         <option value="single">Single Service</option>
                         <option value="package">Package</option>
                     </select>
 
-                    <div id="packageOptions" class="hidden md:col-span-2">
-                        <label><input type="checkbox" value="cockroach-bedbug"> Cockroach + Bedbug</label>
-                        <label><input type="checkbox" value="termite"> Termite Control</label>
-                        <label><input type="checkbox" value="mosquito"> Mosquito Control</label>
+                    <!-- Single Service Selection -->
+                    <div id="single-selection" class="hidden">
+                        <select id="single-service" name="singleService"
+                            class="w-full px-6 py-3 border-2 border-gray-300 rounded-2xl">
+                            <option selected disabled value="">Select Single Service</option>
+                            <option value="cockroach-herbal">Cockroach Gel (Herbal)</option>
+                            <option value="cockroach-chemical">Cockroach Spray (Chemical)</option>
+                            <option value="cockroach-korean">Cockroach Gel (Korean)</option>
+                            <option value="ant-gel">Ant Gel (Korean)</option>
+                            <option value="bedbugs">Bedbug Treatment</option>
+                            <option value="rats">Rats (₹100 per pad)</option>
+                            <option value="termites">Termites (Inspection Required)</option>
+                            <option value="mosquito">Mosquito Control</option>
+                            <option value="house-flies">House Flies</option>
+                            <option value="snake">Snake Control</option>
+                            <option value="honeybees">Honeybees</option>
+                            <option value="annual-contract">Annual Contracts for Societies</option>
+                        </select>
                     </div>
 
-                    <select id="singleService" class="hidden form-input">
-                        <option selected disabled value="">Select Single Service</option>
-                        <option value="cockroach">Cockroach Control</option>
-                        <option value="bedbug">Bedbug Treatment</option>
-                        <option value="termite">Termite Treatment</option>
-                        <option value="mosquito">Mosquito Control</option>
-                    </select>
+                    <!-- Package Service Multi-Select -->
+                    <div id="package-selection" class="hidden space-y-2">
+                        <p class="font-semibold">Select Services:</p>
+                        <div id="package-options" class="flex flex-col space-y-2"> 
+                            <label><input type="checkbox" name="packageServices" value="cockroach-herbal"> Cockroach Gel
+                                (Herbal)</label>
+                            <label><input type="checkbox" name="packageServices" value="cockroach-chemical"> Cockroach
+                                Spray
+                                (Chemical)</label>
+                            <label><input type="checkbox" name="packageServices" value="cockroach-korean"> Cockroach Gel
+                                (Korean)</label>
+                            <label><input type="checkbox" name="packageServices" value="ant-gel"> Ant Gel
+                                (Korean)</label>
+                            <label><input type="checkbox" name="packageServices" value="bedbugs"> Bedbug
+                                Treatment</label>
+                            <label><input type="checkbox" name="packageServices" value="rats"> Rats (₹100 per
+                                pad)</label>
+                            <label><input type="checkbox" name="packageServices" value="termites"> Termites (Inspection
+                                Required)</label>
+                            <label><input type="checkbox" name="packageServices" value="mosquito"> Mosquito
+                                Control</label>
+                            <label><input type="checkbox" name="packageServices" value="house-flies"> House
+                                Flies</label>
+                            <label><input type="checkbox" name="packageServices" value="snake"> Snake Control</label>
+                            <label><input type="checkbox" name="packageServices" value="honeybees"> Honeybees</label>
+                            <label><input type="checkbox" name="packageServices" value="annual-contract"> Annual
+                                Contracts for
+                                Societies</label>
+                        </div>
+                    </div> 
 
-                    <select id="serviceDuration" required class="form-input">
-                        <option selected disabled value="">Select Service Duration</option>
-                        <option value="one-time">One Time</option>
-                        <option value="two-times">Two Times</option>
-                        <option value="quarterly">Quarterly</option>
-                        <option value="half-yearly">Half Yearly</option>
-                        <option value="annually">Annually</option>
-                    </select>
-
-                    <input type="text" id="discountCode" placeholder="Enter Discount Code" class="form-input">
-                    <label class="md:col-span-2"><input type="checkbox" id="emergencyService"> Need Emergency Service?
-                        (+$30)</label>
-
-                    <div class="md:col-span-2">
-                        <p id="totalPrice" class="text-lg font-semibold">Total Price: $0</p>
+                    <div>
+                        <p id="totalPrice" class="text-lg font-semibold">Total Price: ₹0</p>
                     </div>
 
-                    <button type="submit" class="submit-btn">Checkout</button>
-                    <a id="whatsappLink" href="#" class="submit-btn bg-green-500">Chat on WhatsApp</a>
+                    <button type="submit"
+                        class="block mx-auto w-[300px] bg-[#6EAF9E] font-semibold text-white px-4 py-2 rounded-4xl hover:bg-[#468070] md:py-3 lg:px-6">
+                        Submit
+                    </button>
                 </form>
 
+
             </div>
 
-            <div class="md:w-4/5 md:mx-auto py-6 md:pt-8">
-                <strong class="text-justify xl:text-2xl">Why Book Online?</strong>
-                <br><br>
-
-                <ul>
-                    <li>Exclusive Discounts: Get special deals when you book online.</li>
-                    <li>Coupons & Offers: Use promo codes for extra savings.</li>
-                    <li>Quick & Easy: Book anytime, anywhere in just a few clicks.</li>
-                </ul>
-
-                <br>
-
-                <strong class="text-justify xl:text-2xl">How to Book & Apply Coupons</strong>
-
-                <br><br>
-                Choose your service and fill in the details.
-                Enter the coupon code at checkout.
-                Enjoy discounted pricing instantly!
-
-                <br><br>
-
-                <strong class="text-justify xl:text-2xl">Referral Program</strong>
-                <br><br>
-
-                <ul>
-                    <li>Refer & Earn! Share your referral code with friends.</li>
-                    <li>Referral Discount: Your friend gets 5% off their first booking, and you get 5% off on your next
-                        service.</li>
-                </ul>
-            </div>
+        <div class="md:w-4/5 md:mx-auto py-6 md:pt-8">
+            <strong class="text-justify xl:text-2xl">Why Book Your Pest Control Service Online?</strong>
+            <br><br>
+        
+            <ul class="space-y-4">
+                <li><strong>Convenient Scheduling:</strong> Book your pest control service at any time, from anywhere, without
+                    needing to call.</li>
+                <li><strong>Transparent Pricing:</strong> See service costs upfront and avoid hidden fees.</li>
+                <li><strong>Secure Online Booking:</strong> Your information is protected, and booking is quick and hassle-free.
+                </li>
+            </ul>
+        
+            <br>
+        
+            <strong class="text-justify xl:text-2xl">Easy Online Booking Process</strong>
+        
+            <br><br>
+            Select your desired pest control service and provide your property details.
+            Choose a convenient date and time for your appointment.
+            Review your booking and confirm.
+        
+            <br><br>
+        
+            <strong class="text-justify xl:text-2xl">Our Service Guarantee</strong>
+            <br><br>
+        
+            <ul class="space-y-4">
+                <li><strong>Quality Assurance:</strong> We are committed to providing effective pest control solutions.</li>
+                <li><strong>Professional Technicians:</strong> Our trained experts will handle your pest issues with care.</li>
+                <li><strong>Satisfaction Guaranteed:</strong> If you're not satisfied, we'll make it right.</li>
+            </ul>
+        </div>
 
         </div>
     </div>
@@ -194,7 +259,7 @@
 
             </div>
 
-            <div class="md:w-3/4 md:mx-auto">
+            <div id="callBackForm" class="md:w-3/4 md:mx-auto">
                 <strong class="text-[31px] block text-center xl:text-4xl py-6">
                     Request a Callback
                 </strong>
@@ -232,6 +297,7 @@
                         </button>
                     </div>
                 </form>
+
             </div>
 
 
