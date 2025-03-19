@@ -4,6 +4,10 @@
 
 /* Custom styles */
 
+*{
+  word-wrap: break-word;
+}
+
 nav div ul li::before {
   content: none;
 }
