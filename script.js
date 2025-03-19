@@ -274,6 +274,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // form functionality end
 
+// form date issue fix
+document.addEventListener("DOMContentLoaded", function () {
+  const dateInput = document.getElementById("preferredDate");
+
+  dateInput.addEventListener("focus", function () {
+    this.style.color = "#000"; // Text color on focus
+  });
+
+  dateInput.addEventListe1ner("blur", function () {
+    if (!this.value) {
+      this.style.color = "#9CA3AF"; // Placeholder color when empty
+    }
+  });
+});
+// form date issue fix
+
 // smooth scroll start
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
