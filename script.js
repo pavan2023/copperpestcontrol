@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let autoScroll;
 
   if (scrollContainer) {
+    // Mouse wheel scroll horizontally
     scrollContainer.addEventListener("wheel", (event) => {
       event.preventDefault();
       scrollContainer.scrollLeft += event.deltaY;
@@ -81,11 +82,10 @@ document.addEventListener("DOMContentLoaded", function () {
       stopAutoScroll();
       autoScroll = setInterval(() => {
         scrollContainer.scrollLeft += 2;
-        if (
-          scrollContainer.scrollLeft >=
-          scrollContainer.scrollWidth - scrollContainer.clientWidth
-        ) {
-          scrollContainer.scrollLeft = 0;
+
+        // Check if it's near the end and smoothly reset to start
+        if (scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth - 2) {
+          scrollContainer.scrollTo({ left: 0, behavior: "instant" }); // Reset instantly
         }
       }, 20);
     }
@@ -94,11 +94,23 @@ document.addEventListener("DOMContentLoaded", function () {
       clearInterval(autoScroll);
     }
 
+    // Pause on hover, resume on leave
     scrollContainer.addEventListener("mouseenter", stopAutoScroll);
     scrollContainer.addEventListener("mouseleave", startAutoScroll);
+
+    // Stop auto-scroll while the user interacts (mobile + desktop)
+    ["touchstart", "mousedown"].forEach((event) => {
+      scrollContainer.addEventListener(event, stopAutoScroll);
+    });
+
+    ["touchend", "mouseup"].forEach((event) => {
+      scrollContainer.addEventListener(event, startAutoScroll);
+    });
+
     startAutoScroll();
   }
 });
+
 // horizontal scroll end
 
 // form functionality start
