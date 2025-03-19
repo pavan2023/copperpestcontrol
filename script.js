@@ -1,5 +1,3 @@
-
-
 // Spline code Start
 window.onload = function () {
   var splineViewer = document.querySelector("spline-viewer");
@@ -49,10 +47,13 @@ function attachMenuToggle() {
 
   if (menuToggle && menu) {
     menuToggle.addEventListener("click", function () {
-      menu.classList.toggle("hidden");
+      // Toggle slide-in effect
+      menu.classList.toggle("translate-x-0");
+      menu.classList.toggle("translate-x-full");
+      menu.classList.toggle("opacity-100");
+      menu.classList.toggle("opacity-0");
 
-      // Toggle animation classes
-      this.classList.toggle("open");
+      // Toggle hamburger animation
       const lines = this.querySelectorAll(".line");
       lines[0].classList.toggle("rotate-45");
       lines[0].classList.toggle("translate-y-[8px]");
@@ -64,6 +65,7 @@ function attachMenuToggle() {
 }
 
 document.addEventListener("DOMContentLoaded", attachMenuToggle);
+
 // Navbar toggle function end
 
 // horizontal scroll start
@@ -84,7 +86,10 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollContainer.scrollLeft += 2;
 
         // Check if it's near the end and smoothly reset to start
-        if (scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth - 2) {
+        if (
+          scrollContainer.scrollLeft + scrollContainer.clientWidth >=
+          scrollContainer.scrollWidth - 2
+        ) {
           scrollContainer.scrollTo({ left: 0, behavior: "instant" }); // Reset instantly
         }
       }, 20);

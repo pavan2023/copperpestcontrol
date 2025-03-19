@@ -75,3 +75,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     opacity: 0; /* Makes the icon invisible but clickable */
     cursor: pointer;
 }
+
+.transition-menu {
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.menu-open {
+  transform: translateY(0);
+  opacity: 1;
+}
