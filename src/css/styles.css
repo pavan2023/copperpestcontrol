@@ -2,7 +2,6 @@
 @import "tailwindcss/utilities";
 @import "tailwindcss/components";
 
-/* Custom styles */
 
 *{
   word-wrap: break-word;
@@ -26,6 +25,22 @@ li {
   right: -1.5rem;
 }
 
+
+/* cards styling */
+.scrollContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollContainer {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+/* Card hover effect */
 /* Hide scrollbar */
 .scrollContainer::-webkit-scrollbar {
   display: none;
@@ -46,6 +61,47 @@ li {
   transition: transform 0.3s ease-in-out;
 }
 
+/* Transition menu animations */
+.transition-menu {
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.menu-open {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Mobile Responsive Fix (Vertical Scroll on Mobile) */
+@media (max-width: 425px) {
+  .scrollContainer {
+    overflow-x: hidden !important; /* Disable horizontal scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 600px; /* Set a fixed scrollable height */
+    display: flex;
+    flex-direction: column; /* Stack items in a column */
+    align-items: center; /* Center cards */
+    gap: 1rem; /* Adjust spacing between cards */
+    padding-bottom: 1rem; /* Prevent clipping at bottom */
+  }
+
+  .scrollContainer > div {
+    flex-direction: column; /* Ensure inner container stacks */
+    width: 100%; /* Make sure it takes full width */
+  }
+
+  .scrollContainer > div > div {
+    width: 90%; /* Prevent extra horizontal space */
+    max-width: 400px; /* Set a max width for better layout */
+    margin: 20px auto;
+  }
+}
+/* cards styling */
+
+
+/* nav bar styling */
+
 select {
     appearance: none; /* Removes default dropdown styling */
     -webkit-appearance: none;
@@ -56,7 +112,10 @@ select {
     background-position: right 1rem center; /* Positions the arrow */
     background-size: 1rem;
 }
+/* nav bar styling */
 
+
+/* date input */
 input[type="date"] {
     appearance: auto; /* Ensures default browser styling */
     -webkit-appearance: auto;
@@ -79,14 +138,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     opacity: 0; /* Makes the icon invisible but clickable */
     cursor: pointer;
 }
+/* date input */
 
-.transition-menu {
-  transform: translateY(-20px);
-  opacity: 0;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-}
 
-.menu-open {
-  transform: translateY(0);
-  opacity: 1;
-}

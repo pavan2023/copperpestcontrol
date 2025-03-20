@@ -63,9 +63,7 @@ function attachMenuToggle() {
     });
   }
 }
-
 document.addEventListener("DOMContentLoaded", attachMenuToggle);
-
 // Navbar toggle function end
 
 // horizontal scroll start
@@ -115,11 +113,9 @@ document.addEventListener("DOMContentLoaded", function () {
     startAutoScroll();
   }
 });
-
 // horizontal scroll end
 
 // form functionality start
-
 document.addEventListener("DOMContentLoaded", function () {
   // Rates Chart
   const rates = {
@@ -271,7 +267,6 @@ document.addEventListener("DOMContentLoaded", function () {
   singleService.addEventListener("change", calculateTotalPrice);
   packageOptions.addEventListener("input", calculateTotalPrice);
 });
-
 // form functionality end
 
 // form date issue fix
@@ -304,7 +299,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const offset = 50; // Adjust this value as needed
 
         window.scrollTo({
-          top: targetElement.offsetTop - offset, // Subtract the offset
+          top: targetElement.offsetTop - offset, // Subtract the offset 
           behavior: "smooth",
         });
       }
