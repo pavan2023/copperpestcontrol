@@ -66,55 +66,6 @@ function attachMenuToggle() {
 document.addEventListener("DOMContentLoaded", attachMenuToggle);
 // Navbar toggle function end
 
-// horizontal scroll start
-document.addEventListener("DOMContentLoaded", function () {
-  const scrollContainer = document.querySelector(".overflow-x-auto");
-  let autoScroll;
-
-  if (scrollContainer) {
-    // Mouse wheel scroll horizontally
-    scrollContainer.addEventListener("wheel", (event) => {
-      event.preventDefault();
-      scrollContainer.scrollLeft += event.deltaY;
-    });
-
-    function startAutoScroll() {
-      stopAutoScroll();
-      autoScroll = setInterval(() => {
-        scrollContainer.scrollLeft += 2;
-
-        // Check if it's near the end and smoothly reset to start
-        if (
-          scrollContainer.scrollLeft + scrollContainer.clientWidth >=
-          scrollContainer.scrollWidth - 2
-        ) {
-          scrollContainer.scrollTo({ left: 0, behavior: "instant" }); // Reset instantly
-        }
-      }, 20);
-    }
-
-    function stopAutoScroll() {
-      clearInterval(autoScroll);
-    }
-
-    // Pause on hover, resume on leave
-    scrollContainer.addEventListener("mouseenter", stopAutoScroll);
-    scrollContainer.addEventListener("mouseleave", startAutoScroll);
-
-    // Stop auto-scroll while the user interacts (mobile + desktop)
-    ["touchstart", "mousedown"].forEach((event) => {
-      scrollContainer.addEventListener(event, stopAutoScroll);
-    });
-
-    ["touchend", "mouseup"].forEach((event) => {
-      scrollContainer.addEventListener(event, startAutoScroll);
-    });
-
-    startAutoScroll();
-  }
-});
-// horizontal scroll end
-
 // form functionality start
 document.addEventListener("DOMContentLoaded", function () {
   // Rates Chart
@@ -285,25 +236,190 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // form date issue fix
 
-// smooth scroll start
+// services scroll and animation start
 document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
+  const scrollContainer = document.querySelector(".scrollContainer");
+  let autoScroll;
 
-      const targetId = this.getAttribute("href").substring(1);
-      const targetElement = document.getElementById(targetId);
+  if (scrollContainer) {
+    // Create Left Arrow
+    const prevArrow = document.createElement("div");
+    prevArrow.innerHTML = "&#x23F4;";
+    prevArrow.id = "prevArrow";
+    prevArrow.className =
+      "absolute left-2 top-1/2 -translate-y-[84%] text-6xl text-[#1B515B] cursor-pointer transition-transform transform hover:scale-110 active:scale-125 z-10";
+    prevArrow.style.display = "none"; // Initially hidden
+    scrollContainer.parentElement.appendChild(prevArrow);
 
-      if (targetElement) {
-        // Add a small offset to ensure the form is fully visible
-        const offset = 50; // Adjust this value as needed
+    // Create Right Arrow
+    const nextArrow = document.createElement("div");
+    nextArrow.innerHTML = "&#x23F5;";
+    nextArrow.id = "nextArrow";
+    nextArrow.className =
+      "absolute right-2 top-1/2 -translate-y-[84%] text-6xl text-[#1B515B] cursor-pointer transition-transform transform hover:scale-110 active:scale-125 z-10";
+    scrollContainer.parentElement.appendChild(nextArrow);
 
-        window.scrollTo({
-          top: targetElement.offsetTop - offset, // Subtract the offset 
-          behavior: "smooth",
-        });
+    // Mouse wheel scroll horizontally
+    scrollContainer.addEventListener("wheel", (event) => {
+      event.preventDefault();
+      scrollContainer.scrollLeft += event.deltaY;
+    });
+
+    function startAutoScroll() {
+      stopAutoScroll();
+      autoScroll = setInterval(() => {
+        scrollContainer.scrollLeft += 2;
+        if (
+          scrollContainer.scrollLeft + scrollContainer.clientWidth >=
+          scrollContainer.scrollWidth - 2
+        ) {
+          scrollContainer.scrollTo({ left: 0, behavior: "instant" });
+        }
+      }, 20);
+    }
+
+    function stopAutoScroll() {
+      clearInterval(autoScroll);
+    }
+
+    // Pause on hover, resume on leave
+    scrollContainer.addEventListener("mouseenter", stopAutoScroll);
+    scrollContainer.addEventListener("mouseleave", startAutoScroll);
+
+    // Stop auto-scroll while the user interacts (mobile + desktop)
+    ["touchstart", "mousedown"].forEach((event) => {
+      scrollContainer.addEventListener(event, stopAutoScroll);
+    });
+
+    ["touchend", "mouseup"].forEach((event) => {
+      scrollContainer.addEventListener(event, startAutoScroll);
+    });
+
+    // Button-based scrolling
+    const scrollAmount = 300;
+    prevArrow.addEventListener("click", () => {
+      scrollContainer.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      stopAutoScroll();
+    });
+
+    nextArrow.addEventListener("click", () => {
+      scrollContainer.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      stopAutoScroll();
+    });
+
+    // Show/Hide Arrows on Scroll
+    function updateArrows() {
+      prevArrow.style.display =
+        scrollContainer.scrollLeft > 0 ? "block" : "none";
+      nextArrow.style.display =
+        scrollContainer.scrollLeft + scrollContainer.clientWidth <
+        scrollContainer.scrollWidth
+          ? "block"
+          : "none";
+    }
+
+    scrollContainer.addEventListener("scroll", updateArrows);
+    updateArrows(); // Initialize visibility
+
+    startAutoScroll();
+  }
+});
+// services scroll and animation End
+
+// services onclick info model start
+document.addEventListener("DOMContentLoaded", function () {
+  // Rate Chart Data
+  const services = {
+    "Ant Control Service": {
+      price: "₹1400 - ₹3400",
+      warranty: "6 Months",
+      covered: "Safe herbal gel application for long-term ant prevention.",
+      notCovered: "Cleaning of treated areas is not included.",
+    },
+    "Bee Control Service": {
+      price: "Starts from ₹2500",
+      warranty: "No Warranty",
+      covered: "Safe hive removal and relocation if possible.",
+      notCovered: "Structural repairs after hive removal.",
+    },
+    "Bedbug Control Service": {
+      price: "₹1800 - ₹4000",
+      warranty: "3 Months",
+      covered: "Two treatments to eliminate bedbugs and eggs.",
+      notCovered: "Furniture deep cleaning.",
+    },
+    "Cockroach Control Service": {
+      price: "₹600 - ₹4600",
+      warranty: "2 to 6 Months (varies by treatment)",
+      covered: "Gel-based and spray-based cockroach treatment options.",
+      notCovered: "Deep cleaning after treatment.",
+    },
+    "Mosquito Control Service": {
+      price: "Quoted upon inspection",
+      warranty: "1 Month",
+      covered: "Outdoor and indoor fogging to reduce mosquitoes.",
+      notCovered: "100% elimination not guaranteed.",
+    },
+    "Rat Control Service": {
+      price: "₹100 per pad",
+      warranty: "No Warranty",
+      covered: "Glue traps and bait stations for rodent control.",
+      notCovered: "Dead rodent removal service.",
+    },
+    "Snake Control Service": {
+      price: "Quoted upon inspection",
+      warranty: "No Warranty",
+      covered: "Safe snake capture and relocation.",
+      notCovered: "Preventive measures or sealing entry points.",
+    },
+    "Termite Control Service": {
+      price: "₹10 per SQFT",
+      warranty: "5 Years",
+      covered: "Drilling and injection treatment for long-term protection.",
+      notCovered: "Post-treatment damage repairs.",
+    },
+  };
+
+  // Get all service cards
+  document.querySelectorAll(".service-card").forEach((card) => {
+    card.addEventListener("click", function () {
+      let serviceName = this.querySelector("strong").innerText;
+
+      // Get the corresponding service details
+      let serviceData = services[serviceName];
+
+      if (serviceData) {
+        document.getElementById("modalTitle").innerText = serviceName;
+        document.getElementById(
+          "modalPrice"
+        ).innerText = `Price: ${serviceData.price}`;
+        document.getElementById(
+          "modalWarranty"
+        ).innerText = `Warranty: ${serviceData.warranty}`;
+        document.getElementById(
+          "modalCovered"
+        ).innerText = `✔ ${serviceData.covered}`;
+        document.getElementById(
+          "modalNotCovered"
+        ).innerText = `✖ ${serviceData.notCovered}`;
+        document.getElementById("serviceModal").classList.remove("hidden");
       }
     });
   });
-});
-// smooth scroll end
+
+  // Close modal on close button
+  document.getElementById("closeModal").addEventListener("click", function () {
+    document.getElementById("serviceModal").classList.add("hidden");
+  });
+
+  // Close modal when clicking outside of the modal box
+  document
+    .getElementById("serviceModal")
+    .addEventListener("click", function (event) {
+      if (event.target === this) {
+        // Only close if the background is clicked
+        this.classList.add("hidden");
+      }
+    });
+}); 
+// services onclick info model end

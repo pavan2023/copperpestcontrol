@@ -2,9 +2,13 @@
 @import "tailwindcss/utilities";
 @import "tailwindcss/components";
 
-
-*{
+* {
   word-wrap: break-word;
+}
+
+/* Button styling */
+button {
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
 }
 
 nav div ul li::before {
@@ -14,7 +18,7 @@ nav div ul li::before {
 li::before {
   content: "✔";
   margin-right: 0.5rem;
-  color: green;
+  color: #6EAF9E;
   font-weight: bolder;
   position: absolute;
   left: -1.5rem;
@@ -22,15 +26,9 @@ li::before {
 
 li {
   position: relative;
-  right: -1.5rem;
 }
 
-
-/* cards styling */
-.scrollContainer::-webkit-scrollbar {
-  display: none;
-}
-
+/* Cards styling */
 .scrollContainer {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -40,25 +38,23 @@ li {
   padding: 10px 0;
 }
 
-/* Card hover effect */
-/* Hide scrollbar */
 .scrollContainer::-webkit-scrollbar {
   display: none;
 }
 
-.scrollContainer {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  scroll-behavior: smooth;
-  display: flex;
-  overflow-x: auto;
-  padding: 10px 0;
+/* Card hover effect */
+.scrollContainer .flex > div {
+  transition: transform 0.3s ease-in-out;
 }
 
-/* Card hover effect */
 .scrollContainer .flex > div:hover {
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
+}
+
+.scrollContainer .flex > div * {
+  transform: none !important;
+  will-change: auto;
 }
 
 /* Transition menu animations */
@@ -76,68 +72,55 @@ li {
 /* Mobile Responsive Fix (Vertical Scroll on Mobile) */
 @media (max-width: 425px) {
   .scrollContainer {
-    overflow-x: hidden !important; /* Disable horizontal scrolling */
-    overflow-y: auto; /* Enable vertical scrolling */
-    max-height: 600px; /* Set a fixed scrollable height */
+    overflow-x: hidden !important;
+    overflow-y: auto;
+    max-height: 600px;
     display: flex;
-    flex-direction: column; /* Stack items in a column */
-    align-items: center; /* Center cards */
-    gap: 1rem; /* Adjust spacing between cards */
-    padding-bottom: 1rem; /* Prevent clipping at bottom */
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
   }
 
   .scrollContainer > div {
-    flex-direction: column; /* Ensure inner container stacks */
-    width: 100%; /* Make sure it takes full width */
+    flex-direction: column;
+    width: 100%;
   }
 
   .scrollContainer > div > div {
-    width: 90%; /* Prevent extra horizontal space */
-    max-width: 400px; /* Set a max width for better layout */
+    width: 90%;
+    max-width: 400px;
     margin: 20px auto;
   }
 }
-/* cards styling */
 
-
-/* nav bar styling */
-
+/* Navbar styling */
 select {
-    appearance: none; /* Removes default dropdown styling */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    padding-right: 2.5rem; /* Ensures space for the arrow */
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='16' height='16' fill='%23222222'><path d='M7 10l5 5 5-5z'/></svg>"); /* Custom dropdown arrow */
-    background-repeat: no-repeat;
-    background-position: right 1rem center; /* Positions the arrow */
-    background-size: 1rem;
-}
-/* nav bar styling */
-
-
-/* date input */
-input[type="date"] {
-    appearance: auto; /* Ensures default browser styling */
-    -webkit-appearance: auto;
-    -moz-appearance: auto;
-    background: white; /* Ensures visibility */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='16' height='16' fill='%23222222'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
 }
 
+/* Date input styling */
 input[type="date"] {
-    appearance: none; /* Removes default styling */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    padding-right: 2.5rem; /* Ensures space for the icon */
-    position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 2.5rem;
+  position: relative;
+  background: white;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0; /* Makes the icon invisible but clickable */
-    cursor: pointer;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
 }
-/* date input */
-
 
