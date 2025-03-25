@@ -49,7 +49,7 @@ function attachMenuToggle() {
     menuToggle.addEventListener("click", function () {
       // Toggle slide-in effect
       menu.classList.toggle("translate-x-0");
-      menu.classList.toggle("translate-x-full");
+      menu.classList.toggle("-translate-x-full"); // Fixed direction
       menu.classList.toggle("opacity-100");
       menu.classList.toggle("opacity-0");
 
@@ -325,6 +325,50 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 // services scroll and animation End
+
+// dynamic card generator start
+document.addEventListener("DOMContentLoaded", function () {
+  const services = [
+      { name: "Ant Control Service", img: "./src/img/pests/ant.png" },
+      { name: "Bee Control Service", img: "./src/img/pests/bee.png" },
+      { name: "Bedbug Control Service", img: "./src/img/pests/bedbug.png" },
+      { name: "Cockroach Control Service", img: "./src/img/pests/cockroach.png" },
+      { name: "Mosquito Control Service", img: "./src/img/pests/mosquito.png" },
+      { name: "Rat Control Service", img: "./src/img/pests/rat.png" },
+      { name: "Snake Control Service", img: "./src/img/pests/snake.png" },
+      { name: "Termite Control Service", img: "./src/img/pests/termite.png" }
+  ];
+
+  const serviceContainer = document.getElementById("serviceContainer");
+
+  services.forEach((service) => {
+      const card = document.createElement("div");
+      card.className = "service-card h-110 lg:h-80 w-80 lg:w-120 bg-blue-50 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0 gap-4 cursor-pointer";
+      
+      card.innerHTML = `
+          <img class="w-32 lg:w-40 object-contain flex-shrink-0" src="${service.img}" alt="${service.name}">
+          <div class="text-center lg:text-left">
+              <strong class="block mx-auto py-2 text-2xl">${service.name}</strong>
+              <button class="bg-[#1B515B] hover:bg-[#5D9796] text-white hover:text-zinc-100 font-bold py-2 px-4 rounded-full mt-4">
+                  Get More Info
+              </button>
+          </div>
+      `;
+
+      card.addEventListener("click", function () {
+          document.getElementById("modalTitle").innerText = service.name;
+          document.getElementById("serviceModal").classList.remove("hidden");
+      });
+
+      serviceContainer.appendChild(card);
+  });
+
+  // Close modal
+  document.getElementById("closeModal").addEventListener("click", function () {
+      document.getElementById("serviceModal").classList.add("hidden");
+  });
+});
+// dynamic card generator end
 
 // services onclick info model start
 document.addEventListener("DOMContentLoaded", function () {
