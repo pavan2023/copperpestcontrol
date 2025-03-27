@@ -242,16 +242,14 @@ document.addEventListener("DOMContentLoaded", function () {
   let autoScroll;
 
   if (scrollContainer) {
-    // Create Left Arrow
     const prevArrow = document.createElement("div");
     prevArrow.innerHTML = "&#x23F4;";
     prevArrow.id = "prevArrow";
     prevArrow.className =
       "absolute left-2 top-1/2 -translate-y-[84%] text-6xl text-[#1B515B] cursor-pointer transition-transform transform hover:scale-110 active:scale-125 z-10";
-    prevArrow.style.display = "none"; // Initially hidden
+    prevArrow.style.display = "none";
     scrollContainer.parentElement.appendChild(prevArrow);
 
-    // Create Right Arrow
     const nextArrow = document.createElement("div");
     nextArrow.innerHTML = "&#x23F5;";
     nextArrow.id = "nextArrow";
@@ -259,7 +257,6 @@ document.addEventListener("DOMContentLoaded", function () {
       "absolute right-2 top-1/2 -translate-y-[84%] text-6xl text-[#1B515B] cursor-pointer transition-transform transform hover:scale-110 active:scale-125 z-10";
     scrollContainer.parentElement.appendChild(nextArrow);
 
-    // Mouse wheel scroll horizontally
     scrollContainer.addEventListener("wheel", (event) => {
       event.preventDefault();
       scrollContainer.scrollLeft += event.deltaY;
@@ -269,11 +266,8 @@ document.addEventListener("DOMContentLoaded", function () {
       stopAutoScroll();
       autoScroll = setInterval(() => {
         scrollContainer.scrollLeft += 2;
-        if (
-          scrollContainer.scrollLeft + scrollContainer.clientWidth >=
-          scrollContainer.scrollWidth - 2
-        ) {
-          scrollContainer.scrollTo({ left: 0, behavior: "instant" });
+        if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
+          scrollContainer.scrollLeft = 0;
         }
       }, 20);
     }
@@ -282,32 +276,25 @@ document.addEventListener("DOMContentLoaded", function () {
       clearInterval(autoScroll);
     }
 
-    // Pause on hover, resume on leave
     scrollContainer.addEventListener("mouseenter", stopAutoScroll);
     scrollContainer.addEventListener("mouseleave", startAutoScroll);
-
-    // Stop auto-scroll while the user interacts (mobile + desktop)
     ["touchstart", "mousedown"].forEach((event) => {
       scrollContainer.addEventListener(event, stopAutoScroll);
     });
-
     ["touchend", "mouseup"].forEach((event) => {
       scrollContainer.addEventListener(event, startAutoScroll);
     });
 
-    // Button-based scrolling
     const scrollAmount = 300;
     prevArrow.addEventListener("click", () => {
       scrollContainer.scrollBy({ left: -scrollAmount, behavior: "smooth" });
       stopAutoScroll();
     });
-
     nextArrow.addEventListener("click", () => {
       scrollContainer.scrollBy({ left: scrollAmount, behavior: "smooth" });
       stopAutoScroll();
     });
 
-    // Show/Hide Arrows on Scroll
     function updateArrows() {
       prevArrow.style.display =
         scrollContainer.scrollLeft > 0 ? "block" : "none";
@@ -319,7 +306,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     scrollContainer.addEventListener("scroll", updateArrows);
-    updateArrows(); // Initialize visibility
+    updateArrows();
 
     startAutoScroll();
   }
@@ -341,7 +328,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const serviceContainer = document.getElementById("serviceContainer");
 
-  services.forEach((service) => {
+  function createServiceCards() {
+    services.forEach((service) => {
       const card = document.createElement("div");
       card.className = "service-card h-110 lg:h-80 w-80 lg:w-120 bg-blue-50 rounded-4xl p-6 flex flex-col lg:flex-row justify-center items-center shadow-lg flex-shrink-0 gap-4 cursor-pointer";
       
@@ -356,17 +344,28 @@ document.addEventListener("DOMContentLoaded", function () {
       `;
 
       card.addEventListener("click", function () {
-          document.getElementById("modalTitle").innerText = service.name;
-          document.getElementById("serviceModal").classList.remove("hidden");
+        document.getElementById("modalTitle").innerText = service.name;
+        document.getElementById("serviceModal").classList.remove("hidden");
       });
 
       serviceContainer.appendChild(card);
-  });
+    });
+  }
 
-  // Close modal
+  createServiceCards();
+  createServiceCards(); // Duplicate for infinite scroll
+
   document.getElementById("closeModal").addEventListener("click", function () {
       document.getElementById("serviceModal").classList.add("hidden");
   });
+
+  function resetScroll() {
+    if (serviceContainer.scrollLeft >= serviceContainer.scrollWidth / 2) {
+      serviceContainer.scrollLeft = 0;
+    }
+    requestAnimationFrame(resetScroll);
+  }
+  resetScroll();
 });
 // dynamic card generator end
 
@@ -377,50 +376,50 @@ document.addEventListener("DOMContentLoaded", function () {
     "Ant Control Service": {
       price: "₹1400 - ₹3400",
       warranty: "6 Months",
-      covered: "Safe herbal gel application for long-term ant prevention.",
-      notCovered: "Cleaning of treated areas is not included.",
+      covered: "Advanced herbal gel application for long-term ant prevention. Odorless & safe for homes.",
+      notCovered: "Cleaning of treated areas and deep sanitation.",
     },
     "Bee Control Service": {
       price: "Starts from ₹2500",
       warranty: "No Warranty",
-      covered: "Safe hive removal and relocation if possible.",
-      notCovered: "Structural repairs after hive removal.",
+      covered: "Expert hive removal with minimal disruption. Relocation when possible.",
+      notCovered: "Structural repairs or wall patching after hive removal.",
     },
     "Bedbug Control Service": {
       price: "₹1800 - ₹4000",
       warranty: "3 Months",
-      covered: "Two treatments to eliminate bedbugs and eggs.",
-      notCovered: "Furniture deep cleaning.",
+      covered: "Two-step treatment for complete elimination of bedbugs and eggs. Safe for furniture & mattresses.",
+      notCovered: "Deep furniture cleaning or upholstery treatment.",
     },
     "Cockroach Control Service": {
       price: "₹600 - ₹4600",
       warranty: "2 to 6 Months (varies by treatment)",
-      covered: "Gel-based and spray-based cockroach treatment options.",
-      notCovered: "Deep cleaning after treatment.",
+      covered: "Highly effective gel & spray-based treatment targeting hidden infestations.",
+      notCovered: "Post-treatment cleanup or grease removal from surfaces.",
     },
     "Mosquito Control Service": {
       price: "Quoted upon inspection",
       warranty: "1 Month",
-      covered: "Outdoor and indoor fogging to reduce mosquitoes.",
-      notCovered: "100% elimination not guaranteed.",
+      covered: "Indoor and outdoor fogging to drastically reduce mosquito presence.",
+      notCovered: "Guaranteed 100% elimination due to external factors.",
     },
     "Rat Control Service": {
-      price: "₹100 per pad",
+      price: "₹100 per pad + ₹200 visiting charges",
       warranty: "No Warranty",
-      covered: "Glue traps and bait stations for rodent control.",
-      notCovered: "Dead rodent removal service.",
+      covered: "Strategic placement of glue traps and bait stations for effective rodent control.",
+      notCovered: "Dead rodent disposal or permanent entry point sealing.",
     },
     "Snake Control Service": {
       price: "Quoted upon inspection",
       warranty: "No Warranty",
-      covered: "Safe snake capture and relocation.",
-      notCovered: "Preventive measures or sealing entry points.",
+      covered: "Safe, humane snake capture and relocation by trained professionals.",
+      notCovered: "Sealing of snake entry points or preventive treatments.",
     },
     "Termite Control Service": {
       price: "₹10 per SQFT",
       warranty: "5 Years",
-      covered: "Drilling and injection treatment for long-term protection.",
-      notCovered: "Post-treatment damage repairs.",
+      covered: "Drill, fill, and seal method for deep termite control and long-term protection.",
+      notCovered: "Repairs for termite-damaged wood or structures.",
     },
   };
 
