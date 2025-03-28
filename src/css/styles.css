@@ -6,9 +6,8 @@
   word-wrap: break-word;
 }
 
-/* Button styling */
-button {
-  transition: background-color 0.3s ease; /* Smooth transition on hover */
+nav{
+  z-index: 99 !important; 
 }
 
 nav div ul li::before {
@@ -25,7 +24,12 @@ li::before {
 }
 
 li {
-  position: relative;
+  position: relative; 
+}
+
+/* Button styling */
+button {
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
 }
 
 /* Cards styling */
