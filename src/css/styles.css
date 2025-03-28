@@ -6,8 +6,8 @@
   word-wrap: break-word;
 }
 
-nav{
-  z-index: 99 !important; 
+nav {
+  z-index: 99 !important;
 }
 
 nav div ul li::before {
@@ -17,14 +17,15 @@ nav div ul li::before {
 li::before {
   content: "✔";
   margin-right: 0.5rem;
-  color: #6EAF9E;
+  color: #6eaf9e;
   font-weight: bolder;
   position: absolute;
   left: -1.5rem;
 }
 
 li {
-  position: relative; 
+  position: relative;
+  left: 23px;
 }
 
 /* Button styling */
@@ -127,4 +128,23 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   opacity: 0;
   cursor: pointer;
 }
+
+/* plans and pakages style */
+#filter-dropdown {
+  min-width: 200px;
+}
+
+#filter-dropdown select {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 8px 12px;
+  width: 100%;
+}
+
+#filter-dropdown select:focus {
+  outline: 2px solid #5d9796;
+  outline-offset: -2px;
+}
+/* plans and pakages style */
 

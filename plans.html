@@ -2,279 +2,188 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Copper Pest Control</title>
+  <title>Copper Pest Control</title>
 
-    <!-- Standard Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="./src/img/favicon.ico">
-    <link rel="icon" type="image/svg+xml" href="./src/img/favicon.ico">
-    <link rel="shortcut icon" href="./src/img/favicon.ico">
+  <!-- Standard Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./src/img/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="./src/img/favicon.ico">
+  <link rel="shortcut icon" href="./src/img/favicon.ico">
 
-    <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./src/img/favicon.ico">
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./src/img/favicon.ico">
 
-    <!-- Android Chrome -->
-    <link rel="manifest" href="/site.webmanifest">
+  <!-- Android Chrome -->
+  <link rel="manifest" href="/site.webmanifest">
 
 
-    <!-- Tailwind CSS CDN -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> -->
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <!-- Tailwind CSS CDN -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> -->
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 
-    <!-- Link to external CSS files -->
-    <link rel="stylesheet" href="src/css/styles.css">
-    <link rel="stylesheet" href="src/css/fonts.css">
+  <!-- Link to external CSS files -->
+  <link rel="stylesheet" href="src/css/styles.css">
+  <link rel="stylesheet" href="src/css/fonts.css">
 </head>
 
 <body>
-    <!-- navbar start -->
-    <nav id="navbar"></nav>
-    <!-- navbar end -->
+  <!-- navbar start -->
+  <nav id="navbar"></nav>
+  <!-- navbar end -->
 
-    <!-- cards start -->
-    <main class="mt-26">
-        <div class="container mx-auto py-10">
-            
-        </div>         
-    </main>
-    <!-- cards end -->
-     <!-- Pest Control Packages Section -->
-<section class="max-w-6xl mx-auto px-4 py-8">
-    <!-- Header -->
-    <div class="text-center mb-8">
-      <h1 class="text-3xl font-bold text-green-600 mb-2">Comprehensive Pest Control Packages</h1>
-      <p class="text-gray-700 text-lg">Professional solutions for a pest-free home</p>
-    </div>
-  
-    <!-- Why Choose Packages -->
-    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-      <h2 class="text-2xl font-semibold text-green-600 mb-4 border-b-2 border-gray-100 pb-2">📌 Why Choose a Package?</h2>
-      <ul class="space-y-2">
-        <li class="flex items-start">
-          <span class="text-green-500 mr-2">✓</span>
-          <span>Saves money compared to individual services.</span>
-        </li>
-        <li class="flex items-start">
-          <span class="text-green-500 mr-2">✓</span>
-          <span>Provides long-term protection with warranties.</span>
-        </li>
-        <li class="flex items-start">
-          <span class="text-green-500 mr-2">✓</span>
-          <span>Covers multiple pests in a single visit.</span>
-        </li>
-        <li class="flex items-start">
-          <span class="text-green-500 mr-2">✓</span>
-          <span>Ensures a healthier, pest-free environment.</span>
-        </li>
-      </ul>
-    </div>
-  
-    <!-- Package Cards -->
-    <h2 class="text-2xl font-semibold text-green-600 mb-6">📦 Our Pest Control Packages</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-      <!-- Home Shield Package -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden">
-        <div class="bg-orange-500 text-white px-4 py-3 font-semibold">1️⃣ Home Shield Package</div>
-        <div class="p-5">
-          <p class="italic text-gray-600 mb-3">For Common Household Pests</p>
-          <p class="font-semibold mb-2">Includes:</p>
-          <ul class="list-disc pl-5 mb-4 space-y-1">
-            <li>Cockroach Gel (Herbal)</li>
-            <li>Ants Control</li>
-            <li>Rats Control</li>
-          </ul>
-          <p class="font-semibold mb-3">Best For: <span class="font-normal">Homes with mild infestations</span></p>
-          <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">Warranty: 3 Months</span>
+  <main class="container mx-auto px-4 py-8">
+    <!-- Hero Section -->
+    <section class="mt-34 text-center mb-12">
+      <h1 class="text-4xl font-bold text-[#B74134] mb-3">Copper Pest Control</h1>
+      <p class="text-lg text-gray-700 max-w-2xl mx-auto">Professional pest solutions with guaranteed results</p>
+    </section>
+
+    <!-- Package Selector -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-[#1B515B] mb-6 border-b-2 border-[#5D9796] pb-2">
+        📦 Pest Control Packages
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="package-container">
+        <!-- Packages will be loaded via JavaScript -->
+      </div>
+    </section>
+
+    <!-- Rate Card Section -->
+    <section class="mb-12">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-semibold text-[#1B515B]">💰 Service Rate Card</h2>
+        <div>
+          <button id="filter-btn"
+            class="bg-[#5D9796] text-white px-4 py-2 rounded-md mr-2 hover:opacity-90 transition">Filter</button>
+          <button id="show-all-btn"
+            class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 transition">Show All</button>
         </div>
       </div>
-  
-      <!-- Sleep Safe Package -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden">
-        <div class="bg-orange-500 text-white px-4 py-3 font-semibold">2️⃣ Sleep Safe Package</div>
-        <div class="p-5">
-          <p class="italic text-gray-600 mb-3">For Bedbugs & Hidden Pests</p>
-          <p class="font-semibold mb-2">Includes:</p>
-          <ul class="list-disc pl-5 mb-4 space-y-1">
-            <li>Bedbugs Treatment</li>
-            <li>Cockroach Gel (Korean)</li>
-            <li>Rats Control</li>
-          </ul>
-          <p class="font-semibold mb-3">Best For: <span class="font-normal">Homes with bedbug problems</span></p>
-          <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">Warranty: 6 Months</span>
+
+      <!-- Fixed Rates Table -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+        <div class="overflow-x-auto">
+          <table class="w-full" id="rate-table">
+            <thead>
+              <tr class="bg-[#1B515B] text-white">
+                <th class="px-4 py-3 text-left">Service</th>
+                <th class="px-4 py-3 text-left">Warranty</th>
+                <th class="px-4 py-3 text-left">1RK</th>
+                <th class="px-4 py-3 text-left">1BHK</th>
+                <th class="px-4 py-3 text-left">2BHK</th>
+                <th class="px-4 py-3 text-left">3BHK</th>
+                <th class="px-4 py-3 text-left">4BHK</th>
+                <th class="px-4 py-3 text-left">Other (Residential)</th>
+                <th class="px-4 py-3 text-left">Commercial</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200" id="rate-table-body">
+              <!-- Fixed rate data will be loaded via JavaScript -->
+            </tbody>
+          </table>
+        </div>
+        <div class="bg-yellow-50 border-l-4 border-orange-500 p-4 text-sm text-gray-600">
+          *Rat Control: ₹100 per pad + ₹200 visiting charge. Pads vary by property size.
         </div>
       </div>
-  
-      <!-- Termite Defense Package -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden">
-        <div class="bg-orange-500 text-white px-4 py-3 font-semibold">3️⃣ Termite Defense Package</div>
-        <div class="p-5">
-          <p class="italic text-gray-600 mb-3">For Wooden & Structural Protection</p>
-          <p class="font-semibold mb-2">Includes:</p>
-          <ul class="list-disc pl-5 mb-4 space-y-1">
-            <li>Termite Control (Spot Treatment)</li>
-            <li>Ant Gel (Korean)</li>
-            <li>Rats Control</li>
-          </ul>
-          <p class="font-semibold mb-3">Best For: <span class="font-normal">Wooden furniture, termite-prone areas</span></p>
-          <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">Warranty: 5 Years (Termites)</span>
+
+      <!-- Quote Required Services -->
+      <h3 class="text-xl font-semibold text-[#1B515B] mb-4">Services Requiring Inspection</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="quote-services-container">
+        <!-- Quote required services will be loaded via JavaScript -->
+      </div>
+    </section>
+
+    <!-- Quote Calculator Section -->
+    <section class="bg-white rounded-lg shadow-md p-6 mb-12">
+      <h2 class="text-2xl font-semibold text-[#1B515B] mb-6">🧮 Quote Calculator</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div>
+          <label class="block text-gray-700 mb-2">Property Type:</label>
+          <select id="property-type" class="w-full p-2 border border-gray-300 rounded-md">
+            <option value="1RK">1RK</option>
+            <option value="1BHK">1BHK</option>
+            <option value="2BHK">2BHK</option>
+            <option value="3BHK">3BHK</option>
+            <option value="4BHK">4BHK</option>
+            <option value="OTHER_RESI">Other (Residential)</option>
+            <option value="COMMERCIAL">Commercial</option>
+          </select>
+        </div>
+
+        <div id="sqft-container" class="hidden">
+          <label class="block text-gray-700 mb-2">Area (sq.ft.):</label>
+          <input type="number" id="sqft-input" class="w-full p-2 border border-gray-300 rounded-md"
+            placeholder="Enter square footage">
+        </div>
+
+        <div id="rooms-container" class="hidden">
+          <label class="block text-gray-700 mb-2">Number of Rooms (min 8):</label>
+          <input type="number" id="rooms-input" min="8" class="w-full p-2 border border-gray-300 rounded-md"
+            placeholder="Enter number of rooms" value="8">
         </div>
       </div>
-  
-      <!-- Complete Protection Package -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden">
-        <div class="bg-orange-500 text-white px-4 py-3 font-semibold">4️⃣ Complete Pest Protection Package</div>
-        <div class="p-5">
-          <p class="italic text-gray-600 mb-3">For Maximum Coverage</p>
-          <p class="font-semibold mb-2">Includes:</p>
-          <ul class="list-disc pl-5 mb-4 space-y-1">
-            <li>Cockroach Gel (Korean)</li>
-            <li>Bedbugs Treatment</li>
-            <li>Rats Control</li>
-            <li>Ants Control</li>
-            <li>Termites (Spot Treatment)</li>
-          </ul>
-          <p class="font-semibold mb-3">Best For: <span class="font-normal">Full-home protection against multiple pests</span></p>
-          <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">Warranty: 1 Year</span>
+
+      <div class="mb-6">
+        <label class="block text-gray-700 mb-3">Select Services:</label>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3" id="services-checkbox-container">
+          <!-- Services checkboxes will be loaded via JavaScript -->
         </div>
       </div>
-    </div>
-  
-    <!-- Detailed Rate Card -->
-    <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
-      <div class="bg-green-600 text-white px-4 py-3 font-semibold">📌 Detailed Pest Control Rate Card</div>
-      <div class="overflow-x-auto">
-        <table class="w-full">
-          <thead>
-            <tr class="bg-gray-50">
-              <th class="px-4 py-3 text-left font-semibold">Service</th>
-              <th class="px-4 py-3 text-left font-semibold">Warranty</th>
-              <th class="px-4 py-3 text-left font-semibold">1RK</th>
-              <th class="px-4 py-3 text-left font-semibold">1BHK</th>
-              <th class="px-4 py-3 text-left font-semibold">2BHK</th>
-              <th class="px-4 py-3 text-left font-semibold">3BHK</th>
-              <th class="px-4 py-3 text-left font-semibold">4BHK</th>
-              <th class="px-4 py-3 text-left font-semibold">Others</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-200">
-            <!-- Cockroach Gel (Herbal) -->
-            <tr class="hover:bg-gray-50">
-              <td class="px-4 py-3">Cockroach Gel (Herbal)</td>
-              <td class="px-4 py-3">3 Months</td>
-              <td class="px-4 py-3">₹600</td>
-              <td class="px-4 py-3">₹900</td>
-              <td class="px-4 py-3">₹1100</td>
-              <td class="px-4 py-3">₹1400</td>
-              <td class="px-4 py-3">₹1600</td>
-              <td class="px-4 py-3">-</td>
-            </tr>
-            
-            <!-- Cockroach Spray (Chemical) -->
-            <tr class="hover:bg-gray-50">
-              <td class="px-4 py-3">Cockroach Spray (Chemical)</td>
-              <td class="px-4 py-3">2 Months</td>
-              <td class="px-4 py-3">₹900</td>
-              <td class="px-4 py-3">₹1200</td>
-              <td class="px-4 py-3">₹1400</td>
-              <td class="px-4 py-3">₹1800</td>
-              <td class="px-4 py-3">₹2000</td>
-              <td class="px-4 py-3">-</td>
-            </tr>
-            
-            <!-- Cockroach Gel (Korean) -->
-            <tr class="hover:bg-gray-50">
-              <td class="px-4 py-3">Cockroach Gel (Korean)</td>
-              <td class="px-4 py-3">6 Months</td>
-              <td class="px-4 py-3">₹1800</td>
-              <td class="px-4 py-3">₹2200</td>
-              <td class="px-4 py-3">₹2800</td>
-              <td class="px-4 py-3">₹3600</td>
-              <td class="px-4 py-3">₹4600</td>
-              <td class="px-4 py-3">-</td>
-            </tr>
-            
-            <!-- Ant Gel (Korean) -->
-            <tr class="hover:bg-gray-50">
-              <td class="px-4 py-3">Ant Gel (Korean)</td>
-              <td class="px-4 py-3">6 Months</td>
-              <td class="px-4 py-3">₹1400</td>
-              <td class="px-4 py-3">₹1800</td>
-              <td class="px-4 py-3">₹2300</td>
-              <td class="px-4 py-3">₹2800</td>
-              <td class="px-4 py-3">₹3400</td>
-              <td class="px-4 py-3">-</td>
-            </tr>
-            
-            <!-- Bedbugs Treatment -->
-            <tr class="hover:bg-gray-50">
-              <td class="px-4 py-3">Bedbugs Treatment</td>
-              <td class="px-4 py-3">3 Months</td>
-              <td class="px-4 py-3">₹1800</td>
-              <td class="px-4 py-3">₹2400</td>
-              <td class="px-4 py-3">₹3000</td>
-              <td class="px-4 py-3">₹3600</td>
-              <td class="px-4 py-3">₹4000</td>
-              <td class="px-4 py-3">-</td>
-            </tr>
-            
-            <!-- Rat Control -->
-            <tr class="hover:bg-gray-50">
-              <td class="px-4 py-3">Rat Control (Pads + Visit Fee)</td>
-              <td class="px-4 py-3">None</td>
-              <td class="px-4 py-3">₹700*</td>
-              <td class="px-4 py-3">₹1000*</td>
-              <td class="px-4 py-3">₹1400*</td>
-              <td class="px-4 py-3">₹2000*</td>
-              <td class="px-4 py-3">₹2600*</td>
-              <td class="px-4 py-3">-</td>
-            </tr>
-            
-            <!-- Termite Control -->
-            <tr class="hover:bg-gray-50">
-              <td class="px-4 py-3">Termite Control</td>
-              <td class="px-4 py-3">5 Years</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">₹10/sq.ft.</td>
-            </tr>
-            
-            <!-- Honeybee Removal -->
-            <tr class="hover:bg-gray-50">
-              <td class="px-4 py-3">Honeybee Removal</td>
-              <td class="px-4 py-3">None</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">From ₹2500</td>
-            </tr>
-          </tbody>
-        </table>
+
+      <div id="quote-result" class="hidden bg-blue-50 p-4 rounded-md mb-6">
+        <h3 class="font-semibold text-blue-700 mb-2">Quote Breakdown:</h3>
+        <div id="quote-details"></div>
+        <div class="mt-3 pt-3 border-t border-gray-200">
+          <p class="font-bold text-lg">Total: ₹<span id="total-price">0</span></p>
+        </div>
       </div>
-      <div class="bg-yellow-50 border-l-4 border-orange-500 p-4 text-sm text-gray-600">
-        *Rat Control: ₹100 per pad + ₹200 visiting charge. Pads vary by property size (5 pads for 1RK, 8 for 1BHK, 12 for 2BHK, 18 for 3BHK, 24 for 4BHK).
-      </div>
-    </div>
-  
+
+      <button id="calculate-btn"
+        class="w-full md:w-auto bg-[#5D9796] text-white px-6 py-3 rounded-md hover:opacity-90 transition">
+        Calculate Quote
+      </button>
+    </section>
+
     <!-- Commercial CTA -->
-    <div class="bg-green-600 text-white rounded-lg shadow-md p-6 text-center">
+    <div class="bg-[#1B515B] text-white rounded-lg shadow-md p-6 text-center">
       <h2 class="text-xl font-semibold mb-2">🏢 Commercial/Society Plans?</h2>
-      <p>Ask us for customized annual contracts! (Scalable pricing for offices, hotels, and housing societies.)</p>
+      <p class="mb-4">We offer customized annual contracts for offices, hotels, and housing societies.</p>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-4 mt-4">
+        <!-- Phone Contact -->
+        <a href="tel:+919822690235"
+          class="bg-white text-[#1B515B] px-6 py-2 rounded-md font-medium hover:bg-gray-100 transition flex items-center justify-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          +91 98226 90235
+        </a>
+
+        <!-- WhatsApp Contact -->
+        <a href="https://wa.me/919822690235" target="_blank"
+          class="bg-green-500 text-white px-6 py-2 rounded-md font-medium hover:bg-green-600 transition flex items-center justify-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+          WhatsApp
+        </a>
+      </div>
     </div>
-  </section>
+  </main>
 
-    <!-- footer start -->
-    <footer id="footer"></footer>
-    <!-- footer End -->
+  <!-- footer start -->
+  <footer id="footer"></footer>
+  <!-- footer End -->
 
-    <!-- Link to external JavaScript file -->
-    <script src="script.js"></script>
+  <!-- Link to external JavaScript file -->
+  <script src="script.js"></script>
 
 </body>
 
