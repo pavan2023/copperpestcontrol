@@ -2,7 +2,7 @@ const pests = [
     {
         id: "cockroach",
         name: "Cockroaches",
-        image: "https://source.unsplash.com/300x200/?cockroach",
+        image: "./src/img/info-pests/cockroach.jpg",
         shortDesc: "Disease carriers that contaminate food and trigger allergies.",
         signs: "Droppings, musty odor, live cockroaches in dark areas.",
         risks: "Spread bacteria, cause asthma, contaminate food.",
@@ -11,7 +11,7 @@ const pests = [
     {
         id: "bedbugs",
         name: "Bedbugs",
-        image: "https://source.unsplash.com/300x200/?bedbug",
+        image: "./src/img/info-pests/bedbugs.jpg",
         shortDesc: "Tiny insects that feed on human blood, causing irritation.",
         signs: "Red bite marks, blood stains on bedding, musty odor.",
         risks: "Skin infections, allergic reactions, sleep disturbances.",
@@ -20,7 +20,7 @@ const pests = [
     {
         id: "rats",
         name: "Rats & Rodents",
-        image: "https://source.unsplash.com/300x200/?rat",
+        image: "./src/img/info-pests/rats.jpg",
         shortDesc: "Rodents that damage property and spread diseases.",
         signs: "Gnaw marks, droppings, scratching noises in walls.",
         risks: "Cause leptospirosis, plague, food contamination.",
@@ -29,7 +29,7 @@ const pests = [
     {
         id: "termites",
         name: "Termites",
-        image: "https://source.unsplash.com/300x200/?termite",
+        image: "./src/img/info-pests/termites.jpg",
         shortDesc: "Silent destroyers that eat away wood and structures.",
         signs: "Hollow wood, mud tubes, discarded wings.",
         risks: "Structural damage costing thousands in repairs.",
@@ -38,7 +38,7 @@ const pests = [
     {
         id: "mosquitoes",
         name: "Mosquitoes",
-        image: "https://source.unsplash.com/300x200/?mosquito",
+        image: "./src/img/info-pests/mosquitoes.jpg",
         shortDesc: "Flying insects that spread deadly viruses like dengue and malaria.",
         signs: "Buzzing sound, itchy bites, stagnant water breeding sites.",
         risks: "Cause malaria, dengue, Zika virus, and chikungunya.",
@@ -47,7 +47,7 @@ const pests = [
     {
         id: "ants",
         name: "Ants",
-        image: "https://source.unsplash.com/300x200/?ant",
+        image: "./src/img/info-pests/ants.jpg",
         shortDesc: "Common household pests that invade food and spread bacteria.",
         signs: "Ant trails, dirt mounds, presence in kitchen or pantry.",
         risks: "Food contamination, painful bites from some species.",
@@ -56,16 +56,16 @@ const pests = [
     {
         id: "houseflies",
         name: "House Flies",
-        image: "https://source.unsplash.com/300x200/?fly",
+        image: "./src/img/info-pests/houseflies.jpg",
         shortDesc: "Flies that land on food and spread bacteria.",
         signs: "Flies hovering around food, buzzing noise, droppings on surfaces.",
         risks: "Spread diseases like cholera, typhoid, and E. coli.",
         prevention: "Keep food covered, use fly traps, maintain hygiene."
     },
     {
-        id: "snakes",
+        id: "",
         name: "Snakes",
-        image: "https://source.unsplash.com/300x200/?snake",
+        image: "./src/img/info-pests/snakes.jpg",
         shortDesc: "Some venomous species pose serious risks to humans.",
         signs: "Snake skins, slithering tracks, presence of rodents.",
         risks: "Venomous bites can be fatal if untreated.",
@@ -74,7 +74,7 @@ const pests = [
     {
         id: "honeybees",
         name: "Honeybees",
-        image: "https://source.unsplash.com/300x200/?honeybee",
+        image: "./src/img/info-pests/honeybees.jpg",
         shortDesc: "Beneficial pollinators but can sting when provoked.",
         signs: "Bee swarms, buzzing noise, honeycomb near the house.",
         risks: "Severe allergic reactions to stings.",
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3 class="text-xl font-semibold mt-3 text-[#1B515B]">${pest.name}</h3>
             <p class="text-gray-700 mt-2">${pest.shortDesc}</p>
             <button class="mt-3 text-blue-600 underline pest-btn" data-id="${pest.id}">Read More</button>
-            <div class="hidden mt-2 text-gray-800 pest-details" id="pest-${pest.id}">
+            <div class="hidden mt-2 text-gray-800 pest-details space-y-3 py-2" id="pest-${pest.id}">
                 <p><strong>Signs:</strong> ${pest.signs}</p>
                 <p><strong>Risks:</strong> ${pest.risks}</p>
                 <p><strong>Prevention:</strong> ${pest.prevention}</p>
