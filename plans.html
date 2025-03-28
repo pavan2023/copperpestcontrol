@@ -33,13 +33,8 @@
   <nav id="navbar"></nav>
   <!-- navbar end -->
 
-  <main class="container mx-auto px-4 py-8">
-    <!-- Hero Section -->
-    <section class="mt-34 text-center mb-12">
-      <h1 class="text-4xl font-bold text-[#B74134] mb-3">Copper Pest Control</h1>
-      <p class="text-lg text-gray-700 max-w-2xl mx-auto">Professional pest solutions with guaranteed results</p>
-    </section>
-
+  <main class="mt-32 container mx-auto px-4 py-8">
+    
     <!-- Package Selector -->
     <section class="mb-12">
       <h2 class="text-2xl font-semibold text-[#1B515B] mb-6 border-b-2 border-[#5D9796] pb-2">
@@ -53,15 +48,16 @@
 
     <!-- Rate Card Section -->
     <section class="mb-12">
-      <div class="flex justify-between items-center mb-4">
+      <div class="flex flex-col md:flex-row justify-between items-center mb-4 border-b-2 border-[#5D9796]">
         <h2 class="text-2xl font-semibold text-[#1B515B]">💰 Service Rate Card</h2>
-        <div>
+        <div class="py-4">
           <button id="filter-btn"
             class="bg-[#5D9796] text-white px-4 py-2 rounded-md mr-2 hover:opacity-90 transition">Filter</button>
           <button id="show-all-btn"
             class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 transition">Show All</button>
         </div>
       </div>
+      
 
       <!-- Fixed Rates Table -->
       <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
@@ -91,7 +87,9 @@
       </div>
 
       <!-- Quote Required Services -->
-      <h3 class="text-xl font-semibold text-[#1B515B] mb-4">Services Requiring Inspection</h3>
+      <h3 class="text-xl font-semibold text-[#1B515B] mt-12 mb- pb-2 mb-6 border-b-2 border-[#5D9796]4">
+        💰 Services Requiring Inspection
+      </h3>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="quote-services-container">
         <!-- Quote required services will be loaded via JavaScript -->
       </div>
@@ -99,7 +97,7 @@
 
     <!-- Quote Calculator Section -->
     <section class="bg-white rounded-lg shadow-md p-6 mb-12">
-      <h2 class="text-2xl font-semibold text-[#1B515B] mb-6">🧮 Quote Calculator</h2>
+      <h2 class="text-2xl font-semibold text-[#1B515B] pb-2 mb-6 border-b-2 border-[#5D9796]">🧮 Quote Calculator</h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
         <div>
@@ -150,7 +148,7 @@
     </section>
 
     <!-- Commercial CTA -->
-    <div class="bg-[#1B515B] text-white rounded-lg shadow-md p-6 text-center">
+    <div class="bg-[#1B515B] text-white rounded-lg shadow-md p-6 mb-8 text-center">
       <h2 class="text-xl font-semibold mb-2">🏢 Commercial/Society Plans?</h2>
       <p class="mb-4">We offer customized annual contracts for offices, hotels, and housing societies.</p>
 
@@ -184,6 +182,7 @@
 
   <!-- Link to external JavaScript file -->
   <script src="script.js"></script>
+  <script src="plans.js"></script>
 
 </body>
 
