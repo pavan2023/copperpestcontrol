@@ -40,8 +40,8 @@ button {
 /* date btn  */
 @media (max-width: 640px) {
   #preferredDate {
-    font-size: 16px; /* Prevent mobile zoom */
-    min-height: 54px; /* Ensure consistent touch area */
+    font-size: 16px;
+    touch-action: manipulation;
   }
 }
 
@@ -123,7 +123,6 @@ select {
   background-size: 1rem;
 }
 
-
 /* plans and pakages style */
 #filter-dropdown {
   min-width: 200px;
@@ -142,4 +141,3 @@ select {
   outline-offset: -2px;
 }
 /* plans and pakages style */
-

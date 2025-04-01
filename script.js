@@ -233,18 +233,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   dateInput.addEventListener("focus", function () {
-    this.type = "date";
-    this.style.color = "#000";
+    if (this.type !== "date") {
+      this.type = "date";
+      this.style.color = "#000";
 
-    if (isIOS) {
-      // Less intrusive iOS workaround
-      setTimeout(() => {
-        if (document.activeElement === this) {
-          this.showPicker?.();
-        }
-      }, 300);
-    } else {
-      this.showPicker?.();
+      if (isIOS) {
+        // Only force picker if not shown automatically
+        setTimeout(() => {
+          if (!this.value && document.activeElement === this) {
+            this.showPicker?.();
+          }
+        }, 500);
+      }
     }
   });
 
