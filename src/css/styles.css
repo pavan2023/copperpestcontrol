@@ -17,15 +17,19 @@ nav div ul li::before {
 li {
   position: relative;
   left: 23px;
+  list-style: none; /* Remove default list styling */
+  padding-left: 1.5rem; /* Create space for the checkmark */
 }
 
 li::before {
-  content: "✔";
-  margin-right: 0.5rem;
-  color: #6eaf9e !important;
-  font-weight: bolder;
+  content: "✓"; /* Alternative checkmark character */
+  display: inline-block;
+  color: #6eaf9e;
+  font-weight: bold;
   position: absolute;
-  left: -1.5rem;
+  left: 0;
+  width: 1.5rem; /* Fixed width for alignment */
+  text-align: center; /* Center the checkmark */
 }
 
 /* Button styling */
