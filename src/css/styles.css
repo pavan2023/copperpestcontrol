@@ -111,40 +111,6 @@ select {
   background-size: 1rem;
 }
 
-/* Date input styling */
-input[type="date"] {
-  position: relative;
-  z-index: 1;
-  background-color: white !important; /* Ensure white background */
-  color: #333 !important; /* Darker text */
-  padding: 12px;
-  border-radius: 10px;
-  font-size: 16px;
-  appearance: none; /* Removes native styling */
-}
-
-/* Force text visibility */
-input[type="date"]::-webkit-datetime-edit {
-  color: #333 !important;
-  opacity: 1 !important;
-}
-
-/* Remove default calendar icon */
-input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.5); /* Make it more visible */
-  cursor: pointer;
-}
-
-
-::placeholder {
-  color: #374151; /* Darker gray */
-  opacity: 1; /* Ensures full visibility */
-}
-
-input, select {
-  background-color: white; 
-}
-
 
 /* plans and pakages style */
 #filter-dropdown {
