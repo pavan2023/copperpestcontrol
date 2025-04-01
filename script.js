@@ -234,6 +234,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const notADateValue = "not-a-date";
     input.setAttribute("value", notADateValue);
     return input.value !== notADateValue;
+  })();
 
   // For browsers that don't properly support date inputs
   if (!isDateInputSupported) {
