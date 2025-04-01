@@ -223,43 +223,51 @@ document.addEventListener("DOMContentLoaded", function () {
 // form date issue fix
 document.addEventListener("DOMContentLoaded", function () {
   const dateInput = document.getElementById("preferredDate");
+
+  // Modern browsers will handle the date input natively
+  // For older browsers/Safari, we'll add some enhancements
+
+  // Check if the browser supports date inputs properly
+  const isDateInputSupported = (function () {
+    const input = document.createElement("input");
+    input.setAttribute("type", "date");
+    const notADateValue = "not-a-date";
+    input.setAttribute("value", notADateValue);
+    return input.value !== notADateValue;
+
+  // For browsers that don't properly support date inputs
+  if (!isDateInputSupported) {
+    // Fallback to text input but with date picker support
+    dateInput.type = "text";
+
+    // Add placeholder
+    dateInput.placeholder = "YYYY-MM-DD";
+
+    // Add pattern for validation
+    dateInput.pattern = "\\d{4}-\\d{2}-\\d{2}";
+
+    // Add title for better UX
+    dateInput.title = "Please use YYYY-MM-DD format";
+
+    // Optional: Add a date picker library here if needed
+    // Example: new Pikaday({ field: dateInput, format: 'YYYY-MM-DD' });
+  }
+
+  // iOS specific enhancements
   const isIOS =
     /iPad|iPhone|iPod/.test(navigator.userAgent) ||
     (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 
-  // Initialize with placeholder styling
-  if (!dateInput.value) {
-    dateInput.style.color = "#9CA3AF";
-  }
+  if (isIOS) {
+    // iOS needs some extra help with the date picker
+    dateInput.addEventListener("focus", function () {
+      this.showPicker && this.showPicker();
+    });
 
-  dateInput.addEventListener("focus", function () {
-    if (this.type !== "date") {
-      this.type = "date";
-      this.style.color = "#000";
-
-      if (isIOS) {
-        // Only force picker if not shown automatically
-        setTimeout(() => {
-          if (!this.value && document.activeElement === this) {
-            this.showPicker?.();
-          }
-        }, 500);
-      }
-    }
-  });
-
-  dateInput.addEventListener("blur", function () {
-    if (!this.value) {
-      this.type = "text";
-      this.style.color = "#9CA3AF";
-    }
-  });
-
-  // Click handler for better mobile UX
-  dateInput.addEventListener("click", function () {
-    if (isIOS && this.type === "text") {
+    dateInput.addEventListener("click", function () {
       this.focus();
-    }
-  });
+      this.showPicker && this.showPicker();
+    });
+  }
 });
 // form date issue fix
