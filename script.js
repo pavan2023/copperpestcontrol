@@ -224,13 +224,30 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   const dateInput = document.getElementById("preferredDate");
 
+  // Fix for mobile devices
+  if (
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    )
+  ) {
+    dateInput.addEventListener("click", function () {
+      this.focus(); // Ensure focus is triggered on click for mobile
+    });
+  }
+
   dateInput.addEventListener("focus", function () {
-    this.style.color = "#000"; // Text color on focus
+    this.type = "date";
+    this.style.color = "#000";
+    // For some mobile browsers, we need to explicitly show picker after a delay
+    setTimeout(() => {
+      this.showPicker?.();
+    }, 100);
   });
 
-  dateInput.addEventListe1ner("blur", function () {
+  dateInput.addEventListener("blur", function () {
     if (!this.value) {
-      this.style.color = "#9CA3AF"; // Placeholder color when empty
+      this.type = "text";
+      this.style.color = "#9CA3AF";
     }
   });
 });

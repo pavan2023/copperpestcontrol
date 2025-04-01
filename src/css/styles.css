@@ -37,6 +37,14 @@ button {
   transition: background-color 0.3s ease; /* Smooth transition on hover */
 }
 
+/* date btn  */
+@media (max-width: 640px) {
+  #preferredDate {
+    font-size: 16px; /* Prevent mobile zoom */
+    min-height: 54px; /* Ensure consistent touch area */
+  }
+}
+
 /* Cards styling */
 .scrollContainer {
   -ms-overflow-style: none;
