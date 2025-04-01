@@ -222,44 +222,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // form date issue fix
 document.addEventListener("DOMContentLoaded", function () {
-  // iOS detection
+  const dateInput = document.getElementById("preferredDate");
   const isIOS =
     /iPad|iPhone|iPod/.test(navigator.userAgent) ||
     (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 
-  function handleDateInputFocus(input) {
-    input.type = "date";
-    input.style.color = "#000";
+  // Initialize with placeholder styling
+  if (!dateInput.value) {
+    dateInput.style.color = "#9CA3AF";
+  }
 
-    // Special handling for iOS
+  dateInput.addEventListener("focus", function () {
+    this.type = "date";
+    this.style.color = "#000";
+
     if (isIOS) {
-      // Create a temporary focus/blur workaround
+      // Less intrusive iOS workaround
       setTimeout(() => {
-        input.blur();
-        setTimeout(() => input.focus(), 100);
-      }, 100);
+        if (document.activeElement === this) {
+          this.showPicker?.();
+        }
+      }, 300);
     } else {
-      input.showPicker?.();
+      this.showPicker?.();
     }
-  }
+  });
 
-  function handleDateInputBlur(input) {
-    if (!input.value) {
-      input.type = "text";
-      input.style.color = "#9CA3AF";
+  dateInput.addEventListener("blur", function () {
+    if (!this.value) {
+      this.type = "text";
+      this.style.color = "#9CA3AF";
     }
-  }
+  });
 
-  // Make functions globally available for inline handlers
-  window.handleDateInputFocus = handleDateInputFocus;
-  window.handleDateInputBlur = handleDateInputBlur;
-
-  // Additional iOS click handler
-  if (isIOS) {
-    const dateInput = document.getElementById("preferredDate");
-    dateInput.addEventListener("click", function () {
+  // Click handler for better mobile UX
+  dateInput.addEventListener("click", function () {
+    if (isIOS && this.type === "text") {
       this.focus();
-    });
-  }
+    }
+  });
 });
 // form date issue fix
