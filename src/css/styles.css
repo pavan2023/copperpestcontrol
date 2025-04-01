@@ -16,7 +16,7 @@ nav div ul li::before {
 
 li {
   position: relative;
-  left: 23px;
+  left: 0px;
   list-style: none; /* Remove default list styling */
   padding-left: 1.5rem; /* Create space for the checkmark */
 }
