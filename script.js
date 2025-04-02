@@ -223,47 +223,73 @@ document.addEventListener("DOMContentLoaded", function () {
 // form date issue fix
 document.addEventListener("DOMContentLoaded", function () {
   const dateInput = document.getElementById("preferredDate");
-  const currentDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
+
+  // Format date as d/m/Y
+  const formatDate = (date) => {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
+  const currentDate = formatDate(new Date());
 
   // Check date input support
   const isDateSupported = () => {
-    const input = document.createElement('input');
-    input.setAttribute('type', 'date');
-    const notADate = 'not-a-date';
-    input.setAttribute('value', notADate);
-    return input.value !== notADate;
+    try {
+      const input = document.createElement('input');
+      input.type = 'date';
+      const notADate = 'not-a-date';
+      input.value = notADate;
+      return input.value !== notADate;
+    } catch (e) {
+      return false;
+    }
   };
 
-  // iOS detection
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
-               (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  // Mobile detection (including iOS)
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-  // For browsers that support date input (non-iOS)
-  if (isDateSupported() && !isIOS) {
-    dateInput.value = currentDate; // Set default value instead of placeholder
+  // For browsers that support date input and aren't mobile
+  if (isDateSupported() && !isMobile) {
+    // Convert d/m/Y to Y-m-d for native date input
+    const [day, month, year] = currentDate.split('/');
+    dateInput.value = `${year}-${month}-${day}`;
+    
+    dateInput.addEventListener('change', function() {
+      // Convert back to d/m/Y when displaying
+      const [y, m, d] = this.value.split('-');
+      this.dataset.displayValue = `${d}/${m}/${y}`;
+    });
     
     dateInput.addEventListener('focus', function() {
       this.showPicker?.();
     });
   } 
-  // Fallback for unsupported browsers and iOS
+  // Fallback for mobile and unsupported browsers
   else {
     dateInput.type = 'text';
     dateInput.placeholder = currentDate;
-    dateInput.pattern = "\\d{4}-\\d{2}-\\d{2}";
-    dateInput.title = "Please use YYYY-MM-DD format";
+    dateInput.pattern = "\\d{2}/\\d{2}/\\d{4}";
+    dateInput.title = "Please use DD/MM/YYYY format";
 
     if (window.flatpickr) {
       flatpickr(dateInput, {
-        dateFormat: "Y-m-d",
+        dateFormat: "d/m/Y",
         minDate: "today",
         defaultDate: currentDate,
-        disableMobile: true
+        disableMobile: false, // Enable mobile support
+        onReady: function(selectedDates, dateStr, instance) {
+          // Mobile devices will use flatpickr's mobile UI
+          if (isMobile) {
+            instance.mobileInput.setAttribute('inputmode', 'none');
+          }
+        }
       });
     } else {
       dateInput.addEventListener('blur', function() {
-        if (!this.value.match(/^\d{4}-\d{2}-\d{2}$/)) {
-          this.setCustomValidity("Please enter date in YYYY-MM-DD format");
+        if (!this.value.match(/^\d{2}\/\d{2}\/\d{4}$/)) {
+          this.setCustomValidity("Please enter date in DD/MM/YYYY format");
         } else {
           this.setCustomValidity("");
         }
@@ -271,8 +297,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // iOS width fix
-  if (isIOS) {
+  // Mobile width fix
+  if (isMobile) {
     dateInput.style.minWidth = '100%';
   }
 });

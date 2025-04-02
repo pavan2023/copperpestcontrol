@@ -167,4 +167,16 @@ select {
   background-color: white !important;
   font-size: 1rem !important;
 }
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .date-input {
+    font-size: 16px; /* Prevent zooming on focus in mobile */
+  }
+}
+
+.flatpickr-mobile {
+  /* Style adjustments for flatpickr's mobile UI */
+  font-size: 16px !important;
+}
 /* Style for both native and fallback date inputs */
