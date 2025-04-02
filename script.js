@@ -224,24 +224,63 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   const dateInput = document.getElementById("preferredDate");
 
-  // Check if the browser supports input type="date"
-  const isDateSupported = (function () {
+  // Check date input support more reliably
+  const isDateSupported = () => {
+    try {
       const input = document.createElement("input");
-      input.setAttribute("type", "date");
-      return input.type === "date";
-  })();
+      input.type = "date";
+      const notADateValue = "not-a-date";
+      input.value = notADateValue;
+      return input.value !== notADateValue;
+    } catch (e) {
+      return false;
+    }
+  };
 
-  if (!isDateSupported) {
-      // Fallback for Safari and older browsers
-      dateInput.type = "text";
-      dateInput.placeholder = "YYYY-MM-DD"; // User-friendly hint
+  if (!isDateSupported()) {
+    console.log(
+      "Browser does not support native date input - applying fallback"
+    );
+    dateInput.type = "text";
+    dateInput.placeholder = "YYYY-MM-DD";
 
-      // Optional: Use a date picker like Flatpickr for better UI
-      if (window.flatpickr) {
-          flatpickr(dateInput, {
-              dateFormat: "Y-m-d",
-          });
+    // Add pattern attribute for basic validation
+    dateInput.pattern = "\\d{4}-\\d{2}-\\d{2}";
+    dateInput.title = "Please use YYYY-MM-DD format";
+
+    // Load Flatpickr if available
+    if (window.flatpickr) {
+      try {
+        flatpickr(dateInput, {
+          dateFormat: "Y-m-d",
+          minDate: "today", // Optional: restrict to future dates
+          disableMobile: true, // Force desktop-style picker even on mobile
+          onReady: function () {
+            // Style adjustments after Flatpickr initialization
+            dateInput.classList.add("flatpickr-input");
+          },
+        });
+      } catch (e) {
+        console.error("Flatpickr initialization failed:", e);
       }
+    } else {
+      // Add basic date format validation if no Flatpickr
+      dateInput.addEventListener("blur", function () {
+        if (!this.value.match(/^\d{4}-\d{2}-\d{2}$/)) {
+          this.setCustomValidity("Please enter date in YYYY-MM-DD format");
+        } else {
+          this.setCustomValidity("");
+        }
+      });
+    }
+  } else {
+    // For browsers that support date input
+    dateInput.addEventListener("focus", function () {
+      this.showPicker?.(); // Try to show native picker (newer browsers)
+    });
   }
+
+  // Style adjustments for all date inputs
+  dateInput.classList.add("date-input");
 });
 // form date issue fix
