@@ -153,10 +153,6 @@ select {
   .date-input {
     min-width: 0; /* Prevent shrinking on iOS */
   }
-  .date-input::placeholder {
-    color: #000000;
-    opacity: 1;
-  }
 }
 
 /* Placeholder styling */

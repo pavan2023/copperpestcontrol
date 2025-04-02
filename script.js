@@ -279,15 +279,16 @@ document.addEventListener("DOMContentLoaded", function () {
       this.showPicker?.();
     });
 
-    // iOS-specific placeholder handling
+    // iOS-specific placeholder handling - improved
     if (isIOS) {
-      dateInput.addEventListener("change", function () {
+      dateInput.addEventListener("focus", function () {
         if (!this.value) {
-          this.dataset.placeholder = this.placeholder;
+          this.placeholder = "YYYY-MM-DD";
+        }
+      });
+      dateInput.addEventListener("blur", function () {
+        if (!this.value) {
           this.placeholder = "";
-        } else if (this.dataset.placeholder) {
-          this.placeholder = this.dataset.placeholder;
-          delete this.dataset.placeholder;
         }
       });
     }
