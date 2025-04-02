@@ -136,16 +136,18 @@ select {
 
 /* Style for both native and fallback date inputs */
 .date-input {
-  -webkit-appearance: none; /* Remove default iOS styling */
+  font-family: "Poppins", sans-serif; 
+  -webkit-appearance: none;  
   -moz-appearance: none;
   appearance: none;
-  font-family: sans-serif;
   cursor: pointer;
   width: 100%;
+  font-size: 16px;
+  text-align: left;  
 }
 
 .date-input:focus {
   outline: none;
-  border-color: #1B515B;
+  border-color: #1b515b;
 }
 /* Style for both native and fallback date inputs */
