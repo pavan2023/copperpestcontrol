@@ -221,5 +221,45 @@ document.addEventListener("DOMContentLoaded", function () {
 // form functionality end
 
 // form date issue fix
- 
+document.addEventListener("DOMContentLoaded", function () {
+  const dateInput = document.getElementById("preferredDate");
+
+  // Mobile detection and enhancement
+  const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  // Add click handler for all devices
+  dateInput.addEventListener("click", function () {
+    // Add visual feedback
+    this.classList.add("wt-border-blue-500", "wt-ring-2", "wt-ring-blue-200");
+
+    // For devices that might need polyfill
+    if (isMobile && this.type !== "date") {
+      this.type = "date";
+      // If still not supported, show alternative
+      if (this.type !== "date") {
+        this.type = "text";
+        // You could add a Wentoolkit modal date picker here if needed
+      }
+    }
+  });
+
+  // Blur effect
+  dateInput.addEventListener("blur", function () {
+    this.classList.remove(
+      "wt-border-blue-500",
+      "wt-ring-2",
+      "wt-ring-blue-200"
+    );
+  });
+
+  // Ensure proper formatting on older Android devices
+  if (isMobile && navigator.userAgent.match(/Android/i)) {
+    dateInput.addEventListener("change", function () {
+      if (this.value) {
+        const formattedDate = new Date(this.value).toLocaleDateString();
+        this.setAttribute("data-formatted", formattedDate);
+      }
+    });
+  }
+});
 // form date issue fix
