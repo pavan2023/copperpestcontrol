@@ -241,64 +241,92 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // Add iOS detection
-  const isIOS =
-    /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  document.addEventListener("DOMContentLoaded", function () {
+    const dateInput = document.getElementById("preferredDate");
+    const placeholder = document.getElementById("datePlaceholder");
 
-  if (!isDateSupported()) {
-    console.log("Browser does not support native date input - applying fallback");
-    dateInput.type = "text";
-    dateInput.placeholder = today; // Set placeholder to current date
-    dateInput.pattern = "\\d{4}-\\d{2}-\\d{2}";
-    dateInput.title = "Please use YYYY-MM-DD format";
+    // Function to format date as YYYY-MM-DD
+    function formatDate(date) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
 
-    if (window.flatpickr) {
+    // Set current date as placeholder text
+    const today = new Date();
+    const todayFormatted = formatDate(today);
+    placeholder.textContent = todayFormatted;
+
+    // Check date input support more reliably
+    const isDateSupported = () => {
       try {
-        flatpickr(dateInput, {
-          dateFormat: "Y-m-d",
-          minDate: "today",
-          disableMobile: true,
-          onReady: function () {
-            dateInput.classList.add("flatpickr-input");
-          },
-        });
+        const input = document.createElement("input");
+        input.type = "date";
+        const notADateValue = "not-a-date";
+        input.value = notADateValue;
+        return input.value !== notADateValue;
       } catch (e) {
-        console.error("Flatpickr initialization failed:", e);
+        return false;
+      }
+    };
+
+    // Add iOS detection
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+    if (!isDateSupported()) {
+      console.log("Browser does not support native date input - applying fallback");
+      dateInput.type = "text";
+      dateInput.placeholder = todayFormatted;
+      dateInput.pattern = "\\d{4}-\\d{2}-\\d{2}";
+      dateInput.title = "Please use YYYY-MM-DD format";
+
+      if (window.flatpickr) {
+        try {
+          flatpickr(dateInput, {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            disableMobile: true,
+            defaultDate: today,
+            onReady: function () {
+              dateInput.classList.add("flatpickr-input");
+            },
+          });
+        } catch (e) {
+          console.error("Flatpickr initialization failed:", e);
+        }
+      } else {
+        dateInput.addEventListener("blur", function () {
+          if (!this.value.match(/^\d{4}-\d{2}-\d{2}$/)) {
+            this.setCustomValidity("Please enter date in YYYY-MM-DD format");
+          } else {
+            this.setCustomValidity("");
+          }
+        });
       }
     } else {
-      dateInput.addEventListener("blur", function () {
-        if (!this.value.match(/^\d{4}-\d{2}-\d{2}$/)) {
-          this.setCustomValidity("Please enter date in YYYY-MM-DD format");
-        } else {
-          this.setCustomValidity("");
-        }
-      });
-    }
-  } else {
-    // For browsers that support date input
-    dateInput.placeholder = today; // Set placeholder to current date
-    dateInput.addEventListener("focus", function () {
-      this.showPicker?.();
-    });
-
-    // iOS-specific placeholder handling
-    if (isIOS) {
+      // For browsers that support date input
       dateInput.addEventListener("focus", function () {
-        if (!this.value) {
-          this.placeholder = "YYYY-MM-DD";
-        }
+        this.showPicker?.();
       });
-      dateInput.addEventListener("blur", function () {
-        if (!this.value) {
-          this.placeholder = today;
+      
+      // Set the min attribute to today's date
+      dateInput.min = todayFormatted;
+    }
+
+    // iOS width fix
+    if (isIOS) {
+      dateInput.style.minWidth = '100%';
+      
+      // Special handling for iOS placeholder
+      dateInput.addEventListener('change', function() {
+        if (this.value) {
+          placeholder.style.display = 'none';
+        } else {
+          placeholder.style.display = 'block';
         }
       });
     }
-  }
-
-  // iOS width fix
-  if (isIOS) {
-    dateInput.style.minWidth = "100%";
-  }
-});
+  });
 // form date issue fix
