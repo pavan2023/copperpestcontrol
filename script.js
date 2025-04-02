@@ -224,6 +224,9 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   const dateInput = document.getElementById("preferredDate");
 
+  // Get current date in YYYY-MM-DD format
+  const today = new Date().toISOString().split("T")[0];
+
   // Check date input support more reliably
   const isDateSupported = () => {
     try {
@@ -243,11 +246,9 @@ document.addEventListener("DOMContentLoaded", function () {
     (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 
   if (!isDateSupported()) {
-    console.log(
-      "Browser does not support native date input - applying fallback"
-    );
+    console.log("Browser does not support native date input - applying fallback");
     dateInput.type = "text";
-    dateInput.placeholder = "YYYY-MM-DD";
+    dateInput.placeholder = today; // Set placeholder to current date
     dateInput.pattern = "\\d{4}-\\d{2}-\\d{2}";
     dateInput.title = "Please use YYYY-MM-DD format";
 
@@ -275,11 +276,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   } else {
     // For browsers that support date input
+    dateInput.placeholder = today; // Set placeholder to current date
     dateInput.addEventListener("focus", function () {
       this.showPicker?.();
     });
 
-    // iOS-specific placeholder handling - improved
+    // iOS-specific placeholder handling
     if (isIOS) {
       dateInput.addEventListener("focus", function () {
         if (!this.value) {
@@ -288,7 +290,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       dateInput.addEventListener("blur", function () {
         if (!this.value) {
-          this.placeholder = "";
+          this.placeholder = today;
         }
       });
     }
