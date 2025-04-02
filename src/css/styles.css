@@ -159,6 +159,7 @@ select {
 .date-input::placeholder {
   color: #000000;
   opacity: 1;
+  font-size: 1rem; /* Ensure consistent font size */
 }
 
 /* Fallback input styling */
