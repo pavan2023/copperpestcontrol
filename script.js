@@ -237,26 +237,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  // Add iOS detection
+  const isIOS =
+    /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
   if (!isDateSupported()) {
     console.log(
       "Browser does not support native date input - applying fallback"
     );
     dateInput.type = "text";
     dateInput.placeholder = "YYYY-MM-DD";
-
-    // Add pattern attribute for basic validation
     dateInput.pattern = "\\d{4}-\\d{2}-\\d{2}";
     dateInput.title = "Please use YYYY-MM-DD format";
 
-    // Load Flatpickr if available
     if (window.flatpickr) {
       try {
         flatpickr(dateInput, {
           dateFormat: "Y-m-d",
-          minDate: "today", // Optional: restrict to future dates
-          disableMobile: true, // Force desktop-style picker even on mobile
+          minDate: "today",
+          disableMobile: true,
           onReady: function () {
-            // Style adjustments after Flatpickr initialization
             dateInput.classList.add("flatpickr-input");
           },
         });
@@ -264,7 +265,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Flatpickr initialization failed:", e);
       }
     } else {
-      // Add basic date format validation if no Flatpickr
       dateInput.addEventListener("blur", function () {
         if (!this.value.match(/^\d{4}-\d{2}-\d{2}$/)) {
           this.setCustomValidity("Please enter date in YYYY-MM-DD format");
@@ -276,11 +276,26 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     // For browsers that support date input
     dateInput.addEventListener("focus", function () {
-      this.showPicker?.(); // Try to show native picker (newer browsers)
+      this.showPicker?.();
     });
+
+    // iOS-specific placeholder handling
+    if (isIOS) {
+      dateInput.addEventListener("change", function () {
+        if (!this.value) {
+          this.dataset.placeholder = this.placeholder;
+          this.placeholder = "";
+        } else if (this.dataset.placeholder) {
+          this.placeholder = this.dataset.placeholder;
+          delete this.dataset.placeholder;
+        }
+      });
+    }
   }
 
-  // Style adjustments for all date inputs
-  dateInput.classList.add("date-input");
+  // iOS width fix
+  if (isIOS) {
+    dateInput.style.minWidth = "100%";
+  }
 });
 // form date issue fix

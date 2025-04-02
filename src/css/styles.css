@@ -143,17 +143,27 @@ select {
   border-radius: 1rem;
   background-color: white;
   color: #000000;
+  -webkit-appearance: none; /* Disable default iOS styling */
+  appearance: none;
+  font-size: 1rem; /* Ensure consistent font size */
 }
 
-/* Style for Flatpickr fallback specifically */
-.flatpickr-input {
-  background-color: white !important;
-  font-size: 1rem !important;
+/* iOS-specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .date-input {
+    min-width: 0; /* Prevent shrinking on iOS */
+  }
 }
 
-/* Placeholder color for fallback */
+/* Placeholder styling */
 .date-input::placeholder {
   color: #000000;
   opacity: 1;
+}
+
+/* Fallback input styling */
+.flatpickr-input {
+  background-color: white !important;
+  font-size: 1rem !important;
 }
 /* Style for both native and fallback date inputs */
