@@ -223,33 +223,32 @@ document.addEventListener("DOMContentLoaded", function () {
 // form date issue fix
 document.addEventListener("DOMContentLoaded", function () {
   const dateInput = document.getElementById("preferredDate");
-  const currentDate = new Date().toISOString().split("T")[0]; // YYYY-MM-DD format
+  const currentDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
 
   // Check date input support
   const isDateSupported = () => {
-    const input = document.createElement("input");
-    input.setAttribute("type", "date");
-    const notADate = "not-a-date";
-    input.setAttribute("value", notADate);
+    const input = document.createElement('input');
+    input.setAttribute('type', 'date');
+    const notADate = 'not-a-date';
+    input.setAttribute('value', notADate);
     return input.value !== notADate;
   };
 
   // iOS detection
-  const isIOS =
-    /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+               (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
   // For browsers that support date input (non-iOS)
   if (isDateSupported() && !isIOS) {
     dateInput.value = currentDate; // Set default value instead of placeholder
-
-    dateInput.addEventListener("focus", function () {
+    
+    dateInput.addEventListener('focus', function() {
       this.showPicker?.();
     });
-  }
+  } 
   // Fallback for unsupported browsers and iOS
   else {
-    dateInput.type = "text";
+    dateInput.type = 'text';
     dateInput.placeholder = currentDate;
     dateInput.pattern = "\\d{4}-\\d{2}-\\d{2}";
     dateInput.title = "Please use YYYY-MM-DD format";
@@ -259,10 +258,10 @@ document.addEventListener("DOMContentLoaded", function () {
         dateFormat: "Y-m-d",
         minDate: "today",
         defaultDate: currentDate,
-        disableMobile: true,
+        disableMobile: true
       });
     } else {
-      dateInput.addEventListener("blur", function () {
+      dateInput.addEventListener('blur', function() {
         if (!this.value.match(/^\d{4}-\d{2}-\d{2}$/)) {
           this.setCustomValidity("Please enter date in YYYY-MM-DD format");
         } else {
@@ -274,7 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // iOS width fix
   if (isIOS) {
-    dateInput.style.minWidth = "100%";
+    dateInput.style.minWidth = '100%';
   }
 });
 // form date issue fix
