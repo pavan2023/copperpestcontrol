@@ -221,5 +221,27 @@ document.addEventListener("DOMContentLoaded", function () {
 // form functionality end
 
 // form date issue fix
+document.addEventListener("DOMContentLoaded", function () {
+  const dateInput = document.getElementById("preferredDate");
 
+  // Check if the browser supports input type="date"
+  const isDateSupported = (function () {
+      const input = document.createElement("input");
+      input.setAttribute("type", "date");
+      return input.type === "date";
+  })();
+
+  if (!isDateSupported) {
+      // Fallback for Safari and older browsers
+      dateInput.type = "text";
+      dateInput.placeholder = "YYYY-MM-DD"; // User-friendly hint
+
+      // Optional: Use a date picker like Flatpickr for better UI
+      if (window.flatpickr) {
+          flatpickr(dateInput, {
+              dateFormat: "Y-m-d",
+          });
+      }
+  }
+});
 // form date issue fix

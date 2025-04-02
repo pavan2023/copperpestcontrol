@@ -37,9 +37,6 @@ button {
   transition: background-color 0.3s ease; /* Smooth transition on hover */
 }
 
-/* date btn  */
- 
-
 /* Cards styling */
 .scrollContainer {
   -ms-overflow-style: none;
