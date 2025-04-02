@@ -226,11 +226,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Set today's date as the default value
   const today = new Date().toISOString().split("T")[0];
-  dateInput.value = today;
+  dateInput.value = today; // Ensures the value is sent to the backend
 
-  // Ensure date picker opens on iOS when clicked
+  // Open date picker on iPhones & all devices
   dateInput.addEventListener("click", function () {
     this.showPicker();
+  });
+
+  // Ensure the selected date updates the input field
+  dateInput.addEventListener("change", function () {
+    if (!this.value) {
+      this.value = today; // If no selection, keep today's date
+    }
   });
 });
 // form date issue fix
