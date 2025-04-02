@@ -162,8 +162,8 @@
                     <input type="text" id="address" name="address" placeholder="Full Address" required
                         class="w-full px-6 py-3 border-2 border-gray-300 rounded-2xl bg-white placeholder:text-black">
                     <input type="date" id="preferredDate" name="preferredDate" required aria-label="Select date"
-                        class="h-[52px] w-full wt-input wt-rounded-lg wt-border wt-border-gray-300 wt-bg-white wt-placeholder-black wt-p-3 wt-w-full px-6 py-3 border-2 border-gray-300 rounded-2xl bg-white placeholder:text-black"
-                        onclick="this.showPicker()">
+                        class="date-input h-[52px] px-6 py-3 border-2 border-gray-300 rounded-2xl bg-white text-black"
+                        value="" onclick="this.showPicker()">
 
                     <select id=" preferredTime" name="preferredTime" required
                         class="w-full px-6 py-3 border-2 border-gray-300 rounded-2xl bg-white placeholder:text-black">
@@ -431,6 +431,9 @@
 
     <!-- Link to external JavaScript file -->
     <script src="script.js"></script>
+
+    <!-- Polyfill for older browsers -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6,fetch"></script>
 
 </body>
 

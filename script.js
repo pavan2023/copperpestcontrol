@@ -221,5 +221,16 @@ document.addEventListener("DOMContentLoaded", function () {
 // form functionality end
 
 // form date issue fix
- 
+document.addEventListener("DOMContentLoaded", function () {
+  const dateInput = document.getElementById("preferredDate");
+
+  // Set today's date as the default value
+  const today = new Date().toISOString().split("T")[0];
+  dateInput.value = today;
+
+  // Ensure date picker opens on iOS when clicked
+  dateInput.addEventListener("click", function () {
+    this.showPicker();
+  });
+});
 // form date issue fix

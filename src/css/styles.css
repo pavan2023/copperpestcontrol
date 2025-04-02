@@ -135,5 +135,17 @@ select {
 /* plans and pakages style */
 
 /* Style for both native and fallback date inputs */
- 
+.date-input {
+  -webkit-appearance: none; /* Remove default iOS styling */
+  -moz-appearance: none;
+  appearance: none;
+  font-family: sans-serif;
+  cursor: pointer;
+  width: 100%;
+}
+
+.date-input:focus {
+  outline: none;
+  border-color: #1B515B;
+}
 /* Style for both native and fallback date inputs */
