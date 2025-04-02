@@ -135,48 +135,5 @@ select {
 /* plans and pakages style */
 
 /* Style for both native and fallback date inputs */
-.date-input {
-  min-height: 54px;
-  width: 100%;
-  padding: 0.75rem 1.5rem;
-  border: 2px solid #d1d5db;
-  border-radius: 1rem;
-  background-color: white;
-  color: #000000;
-  -webkit-appearance: none; /* Disable default iOS styling */
-  appearance: none;
-  font-size: 1rem; /* Ensure consistent font size */
-}
-
-/* iOS-specific fixes */
-@supports (-webkit-touch-callout: none) {
-  .date-input {
-    min-width: 0; /* Prevent shrinking on iOS */
-  }
-}
-
-/* Placeholder styling */
-.date-input::placeholder {
-  color: #000000;
-  opacity: 1;
-  font-size: 1rem; /* Ensure consistent font size */
-}
-
-/* Fallback input styling */
-.flatpickr-input {
-  background-color: white !important;
-  font-size: 1rem !important;
-}
-
-/* Mobile-specific styles */
-@media (max-width: 768px) {
-  .date-input {
-    font-size: 16px; /* Prevent zooming on focus in mobile */
-  }
-}
-
-.flatpickr-mobile {
-  /* Style adjustments for flatpickr's mobile UI */
-  font-size: 16px !important;
-}
+ 
 /* Style for both native and fallback date inputs */
