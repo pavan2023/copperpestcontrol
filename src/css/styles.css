@@ -2,6 +2,15 @@
 @import "tailwindcss/utilities";
 @import "tailwindcss/components";
 
+/* spline code style*/
+body {
+  overflow-y: auto;  
+}
+.spline-obj {
+  pointer-events: none;
+} 
+/* spline code style*/
+
 * {
   word-wrap: break-word;
 }
